@@ -1,0 +1,9 @@
+# Ignore Jekyll generated static website files
+_site
+
+# Ignore any blog drafts
+_posts/*.draft.*
+
+# Ignore VIM temp files
+*.swp
+
