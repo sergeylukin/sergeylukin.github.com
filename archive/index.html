@@ -1,0 +1,31 @@
+---
+layout: inner
+navigation: true # add this page to site navigation list
+title: Archive # will be used in site navigation as link text
+description: "Archived blog posts by Sergey Lukin"
+sitemap:
+  priority: 0.5
+  changefreq: weekly
+---
+
+{% assign array = site.posts %}
+
+{% for item in array  %}
+  {% unless item.draft %}
+    {% capture this_year %}{{ item.date | date: "%Y" }}{% endcapture %}
+
+    {% if this_year != prev_year %}
+      </ul>
+      <h2>{{this_year}}</h2>
+      <ul class="posts cf">
+    {% endif %}
+
+    {% include post_preview.html %}
+
+    {% if forloop.last %}
+      </ul>
+    {% endif %}
+
+    {% capture prev_year %}{{ item.date | date: "%Y" }}{% endcapture %}
+  {% endunless %}
+{% endfor %}

@@ -1,0 +1,66 @@
+permalink: /:year/:title
+baseurl: http://sergeylukin.com
+title: "Sergey Lukin, Web Developer"
+description: "The personal website of web developer Sergey Lukin"
+keywords: [web developer, PHP, Ruby, JavaScript, CSS, SEO, Unix, VIM, GIT, Apache]
+author:
+  name: Sergey Lukin
+  email: contact@sergeylukin.com
+  about: "I develop software. Most of the time I build stuff for Web. In my free time I read books from O'Reilly, watch screencasts from PeepCode and experiment with cutting edge technologies.<br /><br />A more detailed look at my professional capabilities and experience is available in my <a href=\"/resume.html\">resume</a>."
+  GooglePlusID: 108108198145127769393
+  profiles:
+    - name: GitHub
+      url: http://github.com/sergeylukin
+      class: github
+      data_icon: g
+    - name: Email
+      url: mailto:contact@sergeylukin.com
+      class: email
+      data_icon: "@"
+    - name: Twitter
+      url: https://twitter.com/sergey_lukin
+      class: twitter
+      data_icon: t
+like_button_hackernews: false
+like_button_twitter: true
+disqus:
+  enabled: true
+  shortname: sergeylukin
+googleanalytics:
+  account: UA-31126253-1
+experiments:
+  - title: templatify-jQuery
+    sub_title: Javascript
+    description: Tiny HTML-replacement jQuery plugin
+    url: https://github.com/sergeylukin/templatify
+    date: 2012-04-19
+  - title: CSS 3D Bar Graph
+    sub_title: CSS/HTML
+    description: Pure CSS 3D Bar Chart
+    url: https://github.com/sergeylukin/css-3d-bar-graph
+    date: 2012-03-19
+  - title: CSS Jigsaw Puzzle piece
+    sub_title: CSS/HTML
+    description: Pure CSS jigsaw puzzle piece
+    url: https://github.com/sergeylukin/dotfiles
+    date: 2012-02-19
+  - title: CSS Stroked Cutaway Corner
+    sub_title: CSS/HTML
+    description: Pure CSS Stroked Cutaway Corner
+    url: https://github.com/sergeylukin/dotfiles
+    date: 2012-02-19
+  - title: CSS Pyramid Infographic
+    sub_title: CSS/HTML
+    description: Pure CSS Pyramid Infographic
+    url: https://github.com/sergeylukin/dotfiles
+    date: 2012-02-20
+  - title: Dotfiles
+    sub_title: Shell Scripts/VimL
+    description: "unix dotfiles: zsh, git, vim, mutt, etc."
+    url: https://github.com/sergeylukin/dotfiles
+    date: 2012-02-19
+  - title: OpenMVC
+    sub_title: PHP
+    description: Open Source MVC based PHP Framework
+    url: https://github.com/openmvc
+    date: 2011-03-29

@@ -1,0 +1,15 @@
+---
+layout: main
+---
+<header>
+  <nav class="nav">
+    <ul>
+      {% for node in site.pages %}
+        {% if node.navigation == true %}
+        <li><a href="{{ node.url | remove:'index.html' }}"{% if page.url == node.url %} class="active"{% endif %}>{{ node.title }}</a></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </nav>
+</header>
+{{ content }}

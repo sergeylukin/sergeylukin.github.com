@@ -1,0 +1,8 @@
+---
+---
+Sitemap: {{ site.baseurl }}/sitemap.xml
+
+User-agent: *
+Disallow: /img
+Disallow: /fonts
+Disallow: /js

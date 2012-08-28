@@ -1,0 +1,8 @@
+<li>
+  <time datetime="{{ item.date | date: "%Y-%m-%d" }}" pubdate>{{ item.date | date: "%B %d, %Y" }}</time>
+  <a href="{{ item.url }}">
+    <span class="title">{{ item.title }}</span>
+    <span class="sub-title">{{ item.sub_title }}</span>
+    <span class="desc">{{ item.description }}</span>
+  </a>
+</li>
