@@ -4,4 +4,5 @@ layout: nil
 {% include css/normalize.css %}
 {% include css/normalize.local.css %}
 {% include css/base.css %}
+{% include css/syntax.css %}
 {% include css/print.css %}
