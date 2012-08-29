@@ -61,14 +61,14 @@ For example, I can store my personal info:
 and retrieve it in a page using [Liquid](https://github.com/shopify/liquid/wiki) syntax:
 
 {% highlight html %}
-{% raw %}
+{% literal %}
 <p>My name is {{ site.author.name }}</p>
 
 <p>Social links:</p>
 {% for profile in site.author.profiles %}
     <a href="{{ profile.url }}">{{ profile.name }}</a>
 {% endfor %}
-{% endraw %}
+{% endliteral %}
 {% endhighlight %}
 
 The key here is **site** object - in this case we use it to access variables
@@ -94,7 +94,7 @@ navigation: true
 **navigation** variable set to **true** (also we can check the URLs and add additional
 markup if necessary):
 
-{% highlight html %}{% raw %}
+{% highlight html %}{% literal %}
 <ul>
   {% for node in site.pages %}
     {% if node.navigation == true %}
@@ -108,7 +108,7 @@ markup if necessary):
     {% endif %}
   {% endfor %}
 </ul>
-{% endraw %}{% endhighlight %}
+{% endliteral %}{% endhighlight %}
 
 In this example a comparison is done beween **page.url** and **node.url** and
 if no difference found, then variable **attr** gets a value of `class="active"`
@@ -120,7 +120,7 @@ List posts
 
 Printing a list of items inside `_posts` directory is as easy as:
 
-{% highlight html %}{% raw %}
+{% highlight html %}{% literal %}
 <ul>
   {% for item in site.posts limit:5 %}
     <li>
@@ -129,7 +129,7 @@ Printing a list of items inside `_posts` directory is as easy as:
     </li>
   {% endfor %}
 </ul>
-{% endraw %}{% endhighlight %}
+{% endliteral %}{% endhighlight %}
 
 
 Creating a New Post
@@ -163,16 +163,25 @@ In almost every blog post of mine I insert code snippets so it's extremely
 important to have syntax highlighting feature included. Jekyll uses Pygments
 to handle this. Here is how I use it:
 
-    {% raw %}
+    {% literal %}
     {% highlight html %}
     ..some code here..
     {% endhighlight %}
-    {% endraw %}
+    {% endliteral %}
 
 Wonder how I succeeded to print Liquid syntax without it being parsed?
-I placed it between **{&#37; raw &#37;}** and **{&#37; endraw &#37;}**
+I placed it between **{&#37; literal &#37;}** and **{&#37; endliteral &#37;}**
 tags. For more Liquid stuff consider reading
 [Liquid for Designers](https://github.com/shopify/liquid/wiki/liquid-for-designers).
+
+Please note that Liquid v2.3.0 and higher supports tag **{&#37; raw &#37;}** instead,
+however as of today, Github pages server runs Liquid v2.2.2
+Besides that, I would highly recommend installing locally Jekyll and Liquid of
+exactly same versions as Github pages server is running (you can always check
+what software they are running
+[here](https://help.github.com/articles/using-jekyll-with-pages))
+and generating a website locally before deploying. That way you will definitely
+identify any potential problem as early as possible and it will save your time.
 
 
 Commenting
@@ -187,7 +196,7 @@ add a little bit of configuration to `_config.yml`:
 
 and insert this piece of HTML/JavaScript wherever you want to enable comments:
 
-{% highlight javascript %}{% raw %}
+{% highlight javascript %}{% literal %}
 {% if site.disqus.enabled %}
 <!-- Disqus -->
 <div id="disqus_thread"></div>
@@ -206,12 +215,12 @@ and insert this piece of HTML/JavaScript wherever you want to enable comments:
   })();
 </script>
 {% endif %}
-{% endraw %}{% endhighlight %}
+{% endliteral %}{% endhighlight %}
 
 Please note that you can place this code in a separate file, let's say `disqus.html`
 inside `_includes` directory and only add one line wherever you want to include it:
 
-    {% raw %}{% include disqus.html %}{% endraw %}
+    {% literal %}{% include disqus.html %}{% endliteral %}
 
 
 Twitter button
@@ -225,7 +234,7 @@ As an option you can add following to `_config.yml`:
 
 create `_includes/like_button_twitter.html` with following contents:
 
-{% highlight javascript %}{% raw %}
+{% highlight javascript %}{% literal %}
 {% if site.like_button_twitter %}
 <!-- Tweet btn -->
 <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
@@ -240,11 +249,11 @@ create `_includes/like_button_twitter.html` with following contents:
 }(document,"script","twitter-wjs");
 </script>
 {% endif %}
-{% endraw %}{% endhighlight %}
+{% endliteral %}{% endhighlight %}
 
 and finally include it in template, like so:
 
-    {% raw %}{% include like_button_twitter.html %}{% endraw %}
+    {% literal %}{% include like_button_twitter.html %}{% endliteral %}
 
 
 404 Page
