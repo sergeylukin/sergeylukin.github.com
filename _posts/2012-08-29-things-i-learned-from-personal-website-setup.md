@@ -261,8 +261,10 @@ and finally include it in template, like so:
 
 [GitHub pages](http://pages.github.com/) service makes it extremely easy to set custom
 404 page - just place, let's say, 404.md file in the root directory.
-I also add index.md file to directories that don't have index page (like /js/,
-/css/ etc.) and include content's of 404 page.
+Also, I'm not huge fan of that, but I add index.md file to directories that
+don't have index page (like /js/, /css/ etc.) and include content's of 404 page.
+As long as I have those directories in the list of directories to ignore in robots.txt
+file, it's not a big deal.
 
 
 favicon.ico
@@ -274,7 +276,7 @@ Check out [favicon.cc](http://www.favicon.cc/)
 Add meta tag in page's head:
 
 {% highlight html %}
-<link rel="shortcut icon" href="/favicon.ico">
+<link rel="shortcut icon" href="/favicon.ico" />
 {% endhighlight %}
 
 
