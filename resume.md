@@ -42,9 +42,6 @@ Technical skills
 Articles
 --------
 
-{% for item in site.posts %}
-{% unless item.draft %}
-* [{{ item.title }}]({{ item.url }})
-{% endunless %}
-{% endfor %}
+{% for item in site.posts %}{% unless item.draft %}
+* [{{ item.title }}]({{ item.url }}){% endunless %}{% endfor %}
 * [Animated 3D Bar Chart with CSS3](http://tympanus.net/codrops/2012/05/21/animated-3d-bar-chart-with-css3/)
