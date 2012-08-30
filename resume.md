@@ -42,5 +42,9 @@ Technical skills
 Articles
 --------
 
-* [Lazy GIT integration](http://sergeylukin.com/2012/lazy-git-integration/)
+{% for item in site.posts %}
+{% unless item.draft %}
+* [{{ item.title }}]({{ item.url }})
+{% endunless %}
+{% endfor %}
 * [Animated 3D Bar Chart with CSS3](http://tympanus.net/codrops/2012/05/21/animated-3d-bar-chart-with-css3/)
