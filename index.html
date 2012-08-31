@@ -13,7 +13,7 @@ sitemap:
   <ul class="posts cf">
     {% for item in site.posts limit:5 %}
       {% unless item.draft %}
-        {% include post_preview.html %}
+{% include post_preview.html %}
       {% endunless %}
     {% endfor %}
   </ul>
@@ -25,7 +25,7 @@ sitemap:
   <h1 class="section-title lab" data-icon="L">Lab</h1>
   <ul class="experiments cf">
     {% for item in site.experiments limit:4 %}
-    {% include experiment_preview.html %}
+{% include experiment_preview.html %}
     {% endfor %}
   </ul>
   <a href="/lab/" class="more">Laboratory >></a>
