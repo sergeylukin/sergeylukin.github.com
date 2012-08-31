@@ -294,7 +294,10 @@ Why humans.txt?
 > Because it's something simple and fast to create
 
 So why not:) Place it in the root directory of your website
-with some message to humans.
+with some message to humans and optionally add author tag
+to the `<head>` tag:
+
+{% highlight html %}<link rel="author" href="/humans.txt" />{% endhighlight %}
 
 Read more on [humanstxt.org](http://humanstxt.org)
 
