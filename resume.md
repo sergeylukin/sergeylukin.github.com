@@ -36,6 +36,7 @@ Technical skills
 * Know Good and Bad parts of Javascript
 * Websites client-side performance
 * Clean and maintainable PHP
+* Currently learning Ruby + Rails
 * Solid skills in Regular Expressions
 * Always using VIM+GIT+Tmux and most likely on UNIX (FreeBSD, CentOS)
 
