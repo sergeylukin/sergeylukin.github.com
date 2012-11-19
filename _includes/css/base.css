@@ -415,8 +415,25 @@ a.social-icon.email:before {
   background: #ECF4FA;
   margin: 1.5em 0;
   font-size: .8em;
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.4);
 }
   .session-post p {
+    font-style: italic;
+  }
+
+/*
+ * Warning box
+ */
+.warning-box {
+  padding: 0 .5em;
+  border: 1px solid #F0D567;
+  background: #F9E48F;
+  margin: 1.5em 0;
+  font-size: .8em;
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.4);
+  color: #A26C0D;
+}
+  .warning-box p {
     font-style: italic;
   }
 
