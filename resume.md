@@ -16,10 +16,7 @@ Email
 : [contact@sergeylukin.com](mailto:contact@sergeylukin.com)
 
 
-As of today, I'm full-time employee but am looking for a new job.
-
-My dream job is working in Agile team that does it's best in order to be
-as Agile as possible and is proud of that.
+As of today, I'm full-time employee and am not looking for a new job.
 
 About
 -----
