@@ -3,7 +3,7 @@ layout: post
 tags: [yeoman, freebsd]
 title: "Yeoman on FreeBSD 9"
 description: "Step-by-step guide on how I installed Yeoman on FreeBSD 9"
-lastmod: 2012-11-19
+lastmod: 2012-11-22
 ---
 
 Preface
@@ -57,6 +57,13 @@ installation instructions
 
 **Compass**  
 `gem install compass`
+
+Verify Dependencies
+-------------------
+
+Run `curl -L get.yeoman.io | bash` to verify that all
+dependencies were installed (since my commit **8630c44** was merged into
+Yeoman's master branch this step is possible on FreeBSD).
 
 Say hello to Yeoman
 -------------------
