@@ -3,7 +3,7 @@ layout: post
 tags: [yeoman, freebsd]
 title: "Yeoman on FreeBSD 9"
 description: "Step-by-step guide on how I installed Yeoman on FreeBSD 9"
-lastmod: 2012-11-22
+lastmod: 2012-11-23
 ---
 
 Preface
@@ -13,8 +13,17 @@ In this post I will go through the steps I had to perform in order to get
 [Yeoman](http://yeoman.io) up and running on relatively fresh installation of
 FreeBSD 9 with Xorg and Desktop Environment.
 
-Dependencies
-------------
+Check your system
+-----------------
+
+Run `curl -L get.yeoman.io | bash` in order to see what dependencies you need
+to install. Since my commit
+[8630c44](https://github.com/yeoman/yeoman/commit/8630c44fc9cd46155f9a620c9b2a2ec5c9ca81bd)
+was kindly merged into Yeoman's master branch this step is possible on
+FreeBSD.
+
+Install Dependencies
+--------------------
 
 <div class="warning-box" markdown="1">
 The list of dependencies may vary with time. Refer to
@@ -61,9 +70,8 @@ installation instructions
 Verify Dependencies
 -------------------
 
-Run `curl -L get.yeoman.io | bash` to verify that all
-dependencies were installed (since my commit **8630c44** was merged into
-Yeoman's master branch this step is possible on FreeBSD).
+Run `curl -L get.yeoman.io | bash` again to verify that you have completed
+the list of required dependencies.
 
 Say hello to Yeoman
 -------------------
