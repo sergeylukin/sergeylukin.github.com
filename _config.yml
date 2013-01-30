@@ -37,22 +37,22 @@ experiments:
   - title: CSS 3D Bar Graph
     sub_title: CSS/HTML
     description: Pure CSS 3D Bar Chart
-    url: https://github.com/sergeylukin/css-3d-bar-graph
+    url: http://sergeylukin.com/css-3d-bar-graph
     date: 2012-03-19
   - title: CSS Jigsaw Puzzle piece
     sub_title: CSS/HTML
     description: Pure CSS jigsaw puzzle piece
-    url: https://github.com/sergeylukin/dotfiles
+    url: http://sergeylukin.com/css-jigsaw-puzzle-piece/
     date: 2012-02-19
   - title: CSS Stroked Cutaway Corner
     sub_title: CSS/HTML
     description: Pure CSS Stroked Cutaway Corner
-    url: https://github.com/sergeylukin/dotfiles
+    url: http://sergeylukin.com/css-stroked-cutaway-corner/
     date: 2012-02-19
   - title: CSS Pyramid Infographic
     sub_title: CSS/HTML
     description: Pure CSS Pyramid Infographic
-    url: https://github.com/sergeylukin/dotfiles
+    url: htthttp://sergeylukin.com/css-pyramid-infographic/
     date: 2012-02-20
   - title: Dotfiles
     sub_title: Shell Scripts/VimL
