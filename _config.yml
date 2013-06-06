@@ -1,5 +1,6 @@
 permalink: /:year/:title
 baseurl: http://sergeylukin.com
+markdown: rdiscount
 title: "Sergey Lukin, Web Developer"
 description: "The personal website of web developer Sergey Lukin"
 keywords: [web developer, PHP, Ruby, JavaScript, CSS, SEO, Unix, VIM, GIT, Apache]
