@@ -9,7 +9,7 @@ sitemap:
 ---
 {% if site.posts != empty %}
 <section class="cf">
-  <h1 class="section-title blog" data-icon="B">Blog</h1>
+  <h1 class="section-title" data-icon="B">Blog</h1>
   <ul class="posts cf">
     {% for item in site.posts limit:5 %}
       {% unless item.draft %}
@@ -22,7 +22,7 @@ sitemap:
 {% endif %}
 
 <section class="cf">
-  <h1 class="section-title lab" data-icon="L">Lab</h1>
+  <h1 class="section-title"><span class="bubbles-flask">L</span>Lab</h1>
   <ul class="experiments cf">
     {% for item in site.experiments limit:4 %}
 {% include experiment_preview.html %}
