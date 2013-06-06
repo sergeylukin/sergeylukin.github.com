@@ -75,7 +75,7 @@ a:hover {
     border: none;
 }
 
-time {
+.post-info, time {
     font-family: 'Terminal Dosis', sans-serif;
     font-weight: bold;
     color: #A2A2A2;

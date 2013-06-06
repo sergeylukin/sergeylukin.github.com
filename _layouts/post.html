@@ -4,7 +4,9 @@ layout: inner
 <article>
   <header>
     <h1>{{ page.title }}</h1>
-    <time datetime="{{ page.date | date: "%Y-%m-%d" }}" pubdate>{{ page.date | date: "%B %d, %Y" }}</time>
+    <span class="post-info">
+      <time datetime="{{ page.date | date: "%Y-%m-%d" }}" pubdate>{{ page.date | date: "%B %d, %Y" }}</time> by <a href="/resume.html" rel="author">Sergey Lukin</a>
+    </span>
   </header>
   
   {{ content }}
