@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+
+jekyll build && \
+cd ./_site && \
+touch .nojekyll && \# Tell Github not to run Jekyll
+remote_repo=`git config remote.origin.url` && \
+remote_branch="master" && \
+git init && \
+git add . && \
+git commit -m'build' && \
+git push $remote_repo master:$remote_branch --force && \
+rm -fr .git && \
+cd ../ && \
+git push origin source
