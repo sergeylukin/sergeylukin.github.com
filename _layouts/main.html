@@ -14,11 +14,6 @@
   <meta name="author" content="{{ site.author.name }}">
   <meta name="robots" content="{{page.index}}INDEX,{{page.follow}}FOLLOW" />
   {% if page.date %}<meta http-equiv="date" content="{{page.date |date: '%A, %d %m %Y %H:%M:%S GMT'}}" />{% endif %}
-  {% if site.author.GooglePlusID %}
-  <!-- Google+ badge -->
-  <link rel="author" href="https://plus.google.com/{{ site.author.GooglePlusID }}?rel=author" />
-  {% endif %}
-
   <!-- Feed -->
   <link rel="alternate" type="application/atom+xml" href="{{ site.baseurl }}/feed.xml" title="Sergey Lukin">
   <!-- Custom favicon URL -->
@@ -41,6 +36,9 @@
     {% for profile in site.author.profiles %}
     <a href="{{ profile.url }}" class="social-icon {{ profile.class }}" data-icon="{{ profile.data_icon }}">{{ profile.name }}</a>
     {% endfor %}
+    {% if site.author.GooglePlusID %}
+    <a rel="author" href="https://plus.google.com/{{ site.author.GooglePlusID }}?rel=author" style="display: none;">Google+</a>
+    {% endif %}
   </p>
 </footer>
 
