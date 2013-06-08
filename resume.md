@@ -28,14 +28,35 @@ Most of the code I write for fun is available on my [Github profile](https://git
 Technical skills
 ----------------
 
-* Semantic HTML
-* Scalable and cutting-edge CSS
+<dl class="skills-diagram">
+  <dt class="skill-5">UNIX</dt>
+  <dd>5</dd>
+  <dt class="skill-10">Git + Vim + Tmux</dt>
+  <dd>10</dd>
+  <dt class="skill-3">Ruby</dt>
+  <dd>3</dd>
+  <dt class="skill-8">PHP</dt>
+  <dd>8</dd>
+  <dt class="skill-4">RegEx</dt>
+  <dd>4</dd>
+  <dt class="skill-6">HTML5</dt>
+  <dd>6</dd>
+  <dt class="skill-7">Javascript</dt>
+  <dd>7</dd>
+  <dt class="skill-9">CSS</dt>
+  <dd>9</dd>
+  <dt class="skill-2">C#</dt>
+  <dd>2</dd>
+</dl>
+
+* Always using VIM+GIT+Tmux and most likely on UNIX (FreeBSD, CentOS)
+* Solid skills in Regular Expressions
+* Semantic HTML5
 * Know Good and Bad parts of Javascript
-* Websites client-side performance
+* Scalable and cutting-edge CSS
+* Some experience in C and C#
 * Clean and maintainable PHP
 * Currently learning Ruby + Rails
-* Solid skills in Regular Expressions
-* Always using VIM+GIT+Tmux and most likely on UNIX (FreeBSD, CentOS)
 
 Articles
 --------

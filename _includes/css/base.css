@@ -41,6 +41,10 @@
     url('../fonts/terminaldosis/terminaldosis-webfont.woff') format('woff');
 }
 
+/* Specify our unique fonts to different components */
+.skills-diagram {
+  font-family: 'Terminal Dosis', sans-serif;
+}
 
 
 /* =============================================================================
@@ -481,7 +485,8 @@ a.social-icon:before {
 #vcard dl {
   text-align: center;
 }
-#vcard dt {
+/* Hide heading's definition terms */
+#vcard dl:first-of-type dt {
   display: none;
 }
 
