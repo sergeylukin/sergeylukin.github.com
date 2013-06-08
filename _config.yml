@@ -30,6 +30,11 @@ disqus:
 googleanalytics:
   account: UA-31126253-1
 experiments:
+  - title: CSS Skills Diagram
+    sub_title: CSS/HTML
+    description: Pure CSS responsive skills diagram
+    url: http://sergeylukin.com/css-skills-diagram
+    date: 2013-06-09
   - title: templatify-jQuery
     sub_title: Javascript
     description: Tiny HTML-replacement jQuery plugin
