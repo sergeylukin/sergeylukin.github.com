@@ -49,13 +49,13 @@ Technical skills
   <dd>2</dd>
 </dl>
 
-* Always using VIM+GIT+Tmux and most likely on UNIX (FreeBSD, CentOS)
-* Solid skills in Regular Expressions
-* Semantic HTML5
+* Always using Git+Vim+Tmux and most likely on UNIX (FreeBSD, CentOS)
+* Have solid skills in Regular Expressions
+* Crunch semantic HTML5
 * Know Good and Bad parts of Javascript
-* Scalable and cutting-edge CSS
+* Write scalable and play with cutting-edge CSS
 * Some experience in C and C#
-* Clean and maintainable PHP
+* A lot of experience in PHP
 * Currently learning Ruby + Rails
 
 Articles
