@@ -29,23 +29,23 @@ Technical skills
 ----------------
 
 <dl class="skills-diagram">
-  <dt class="skill-5">UNIX</dt>
+  <dt class="skill-5" data-xrange="20" data-yrange="20">UNIX</dt>
   <dd>5</dd>
-  <dt class="skill-10">Git + Vim + Tmux</dt>
+  <dt class="skill-10" data-xrange="30" data-yrange="10">Git + Vim + Tmux</dt>
   <dd>10</dd>
-  <dt class="skill-3">Ruby</dt>
+  <dt class="skill-3" data-xrange="40" data-yrange="40">Ruby</dt>
   <dd>3</dd>
-  <dt class="skill-8">PHP</dt>
+  <dt class="skill-8" data-xrange="10" data-yrange="20">PHP</dt>
   <dd>8</dd>
-  <dt class="skill-4">RegEx</dt>
+  <dt class="skill-4" data-xrange="20" data-yrange="10">RegEx</dt>
   <dd>4</dd>
-  <dt class="skill-6">HTML5</dt>
+  <dt class="skill-6" data-xrange="30" data-yrange="10">HTML5</dt>
   <dd>6</dd>
-  <dt class="skill-7">Javascript</dt>
+  <dt class="skill-7" data-xrange="40" data-yrange="20">Javascript</dt>
   <dd>7</dd>
-  <dt class="skill-9">CSS</dt>
+  <dt class="skill-9" data-xrange="20" data-yrange="30">CSS</dt>
   <dd>9</dd>
-  <dt class="skill-2">C#</dt>
+  <dt class="skill-2" data-xrange="20" data-yrange="10">C#</dt>
   <dd>2</dd>
 </dl>
 

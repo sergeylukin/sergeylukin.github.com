@@ -51,5 +51,33 @@
 {% include disqus.html %}
 {% endif %}
 
+{% if page.id == 'vcard' %}
+<script
+  src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script src="js/plax.js"></script>
+<script>
+jQuery(document).ready(function() {
+  // Save container height
+  var diagramHeight = jQuery('.skills-diagram').height();
+  // Fetch and save coordinates
+  jQuery('.skills-diagram dt').each(function() {
+    var position = $(this).position();
+    $(this).data({top: position.top + 40, left: position.left});
+  });
+  // Apply new coordinates and switch to position: absolute
+  jQuery('.skills-diagram dt').each(function() {
+    $(this).css('top', $(this).data('top') + 'px');
+    $(this).css('left', $(this).data('left') + 'px');
+    $(this).css('position', 'absolute');
+  });
+  // Restore container height
+  $('.skills-diagram').css('height', diagramHeight + 'px');
+  // Enable parallax
+  $('.skills-diagram dt').plaxify();
+  $.plax.enable();
+});
+</script>
+{% endif %}
+
 </body>
 </html>
