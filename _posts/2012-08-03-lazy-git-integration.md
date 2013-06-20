@@ -75,7 +75,7 @@ make it executable:
 
 {% highlight bash %}
 cd /var/htdocs/myproject.git/hooks
-wget bit.ly/M9Gdt3 -O pre-receive --no-check-certificate
+wget http://bit.ly/19l9tpg -O pre-receive --no-check-certificate
 chmod +x pre-receive
 {% endhighlight %}
 
@@ -94,7 +94,7 @@ make it executable:
 
 {% highlight bash %}
 cd /var/htdocs/myproject.git/hooks
-wget http://bit.ly/MV6o8h -O post-receive --no-check-certificate
+wget http://bit.ly/12XVJ57 -O post-receive --no-check-certificate
 chmod +x post-receive
 {% endhighlight %}
 
