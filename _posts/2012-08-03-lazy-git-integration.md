@@ -3,8 +3,14 @@ layout: post
 tags: [git, deployment, workflow]
 description: "How to integrate GIT in a team that is not ready to fully use VCS yet"
 title: Lazy GIT integration
-lastmod: 2012-08-20T00:00:00+00:00
+lastmod: 2013-06-20T00:00:00+00:00
 ---
+
+<div class="warning-box" markdown="1">
+_Update on 20/06/2013_
+
+Add <a href="#deploy-tip">custom deployment strategy tip</a>
+</div>
 
 Preface
 -------
@@ -125,6 +131,32 @@ git config receive.denyNonFastForwards true
 
 `denyNonFastForwards` set to `true` denies any attempts to delete/replace
 existing commits remotely.
+
+<a name="deploy-tip"></a>
+
+Custom deployment
+-----------------
+
+If updating working directory is not enough for your deployment needs I
+suggest commiting a script which will do all is required and executing it
+in `post-receive` hook right after working tree update, like so:
+
+{% highlight bash %}
+# update the working tree
+GIT_WORK_TREE=$WORKTREE git checkout -f
+
+# run custom deploy script
+deploy_script="$WORKTREE/deploy.sh"
+if [ -e "$deploy_script" ]
+then
+  . $deploy_script
+fi
+{% endhighlight %}
+
+In this example I'm executing `deploy.sh` script which resides in the root of
+my repository. Which means I can control my deployment right from my
+local repo and any changes to script take place immediately. It's very
+powerful.
 
 
 Conclusion
