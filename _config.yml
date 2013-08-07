@@ -58,7 +58,7 @@ experiments:
   - title: CSS Pyramid Infographic
     sub_title: CSS/HTML
     description: Pure CSS Pyramid Infographic
-    url: htthttp://sergeylukin.com/css-pyramid-infographic/
+    url: http://sergeylukin.com/css-pyramid-infographic/
     date: 2012-02-20
   - title: Dotfiles
     sub_title: Shell Scripts/VimL
