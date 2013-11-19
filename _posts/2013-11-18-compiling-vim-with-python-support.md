@@ -29,3 +29,17 @@ cd vim74
 --with-python-config-dir=/usr/local/lib/python2.7/config
 make && make install
 {% endhighlight %}
+
+<div class="warning-box" markdown="1">
+ Update on 19/11/2013
+
+If all above fails, I'd consider opening `./src/auto/config.log`
+file and verifying that configuration script fetches correct
+version of Python by searching for `python` string. If it fetches wrong
+version of Python then I'd replace the file it tries to fetch (for
+example `/usr/bin/python2`) with my specific
+version of Python binary just before running configuration script
+(don't forget to remove `./src/auto/config.cache`) and rolling it back
+after it finishes. A bit dumb method but it should work, please let
+me know if you can think of any better approach.
+</div>
