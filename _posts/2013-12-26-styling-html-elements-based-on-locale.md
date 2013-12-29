@@ -7,8 +7,8 @@ title: "Styling HTML elements based on locale"
 
 Here is a brain teaser. Apply styles just to paragraphs in
 [Catalan](http://en.wikipedia.org/wiki/Catalan_language) language
-assuming following markup (of course solution shouldn't be
-dependent on elements position, order or depth):
+assuming following markup and of course solution shouldn't be
+tightened to paragraphs exact position, order or depth:
 
 {% highlight html %}
 <!doctype html>
