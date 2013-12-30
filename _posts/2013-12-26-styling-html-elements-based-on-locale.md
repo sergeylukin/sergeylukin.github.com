@@ -1,6 +1,6 @@
 ---
 layout: post
-tags: 
+tags: [css]
 title: "Styling HTML elements based on locale"
 ---
 
