@@ -35,10 +35,10 @@ So, assuming following markup:
 
 `.item:nth-child(2n+1)` will do something like:
 
-- `2 * 0 + 1` equals 1 and so first element will be selected
-- `2 * 1 + 1` equals 3 and so third element will be selected
-- `2 * 2 + 1` equals 5 and so fifth element will be selected
-- `2 * 3 + 1` equals 7 and so selector will stop iterating as seventh element
+1. `2 * 0 + 1` equals 1 and so first element will be selected
+2. `2 * 1 + 1` equals 3 and so third element will be selected
+3. `2 * 2 + 1` equals 5 and so fifth element will be selected
+4. `2 * 3 + 1` equals 7 and so selector will stop iterating as seventh element
   doesn't exist (note that elements index start with `1` and not with `0`)
 
 
@@ -53,10 +53,10 @@ However, in the end of spec, there is this note:
 What this means is that if we pass `-1n+3` or shorter `-n+3` following
 iteration starting with `n = 0` will happen:
 
-- `-1 * 0 + 3` equals 3 and so third element will be returned
-- `-1 * 1 + 3` equals 2 and so second element will be returned
-- `-1 * 2 + 3` equals 1 and so first element will be returned
-- `-1 * 3 + 3` equals 0 and so selector will stop as there is no element with
+1. `-1 * 0 + 3` equals 3 and so third element will be returned
+2. `-1 * 1 + 3` equals 2 and so second element will be returned
+3. `-1 * 2 + 3` equals 1 and so first element will be returned
+4. `-1 * 3 + 3` equals 0 and so selector will stop as there is no element with
   index `0`
 
 ..which results in selecting first 3 elements! Done.
