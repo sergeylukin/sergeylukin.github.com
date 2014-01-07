@@ -74,10 +74,10 @@ p:lang(ca) {
 }
 {% endhighlight %}
 
-And, you have to admit, it reads uber-cool. It selects
+What it actually does is it selects
 elements that have inherited the specified language from their parents.
 Because paragraph in English has two parents with `lang` attribute
-(`<article lang="en">` and `<html lang="ca">`) and the one that is closer to it has
+(`<article lang="en">`, `<html lang="ca">`) and the closer one has
 value of `en` it is out of our selector's scope.
 
 
@@ -87,5 +87,9 @@ Conclusion
 While there most likely isn't much of need in styling elements based on their
 locale it's definitely worth knowing the difference between using attribute
 selector and :lang pseudo class when filtering locale-specific elements.
-Hopefully this post shows the difference clearly and demonstrates proper
-problem solving.
+
+So if you find yourself using attribute selector to style locale-specific
+content, I'd suggest to consider using `:lang()` pseudo selector instead.
+
+Hopefully this post shows the difference between two approaches clearly
+and demonstrates proper problem solving.
