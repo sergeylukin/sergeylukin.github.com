@@ -89,7 +89,7 @@ locale it's definitely worth knowing the difference between using attribute
 selector and :lang pseudo class when filtering locale-specific elements.
 
 So if you find yourself using attribute selector to style locale-specific
-content, I'd suggest to consider using `:lang()` pseudo selector instead.
+content, I'd suggest to consider using `:lang` pseudo class selector instead.
 
 Hopefully this post shows the difference between two approaches clearly
 and demonstrates proper problem solving.
