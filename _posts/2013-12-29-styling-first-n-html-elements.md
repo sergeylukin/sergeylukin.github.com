@@ -61,3 +61,6 @@ iteration will happen:
   index `0`
 
 ..which results in selecting first 3 elements! Done.
+
+By the way there is a [online nth-child simulator](http://nth-test.com/) which I
+personally use when playing with `nth-*` selectors. Just FYI.
