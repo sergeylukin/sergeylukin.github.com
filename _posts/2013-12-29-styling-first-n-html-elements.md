@@ -16,8 +16,8 @@ Basics
 ------
 
 Besides accepting `odd` or `even` as an argument value `:nth-child()`
-accepts argument in format: *a*n+*b* and iterates by
-incrementing `n` starting with `n = 0` until it reaches the end of the
+accepts algebraic expression in format: *a*n+*b* and executes it in iteration
+by incrementing `n` starting with `n = 0` until it reaches the end of the
 elements tree or until the resulting value is zero or negative.
 
 So, assuming following markup:
@@ -45,17 +45,18 @@ So, assuming following markup:
 Now the real stuff
 ------------------
 
-However, in the end of spec, there is this note:
+In the end of [spec](http://www.w3.org/TR/css3-selectors/#nth-child-pseudo),
+there is this note:
 
 > The value *a* can be negative, but only the positive values of *a*n+*b*, for n≥0,
 > may represent an element in the document tree.
 
 What this means is that if we pass `-1n+3` or shorter `-n+3` following
-iteration starting with `n = 0` will happen:
+iteration will happen:
 
-1. `-1 * 0 + 3` equals 3 and so third element will be returned
-2. `-1 * 1 + 3` equals 2 and so second element will be returned
-3. `-1 * 2 + 3` equals 1 and so first element will be returned
+1. `-1 * 0 + 3` equals 3 and so third element will be selected
+2. `-1 * 1 + 3` equals 2 and so second element will be selected
+3. `-1 * 2 + 3` equals 1 and so first element will be selected
 4. `-1 * 3 + 3` equals 0 and so selector will stop as there is no element with
   index `0`
 
