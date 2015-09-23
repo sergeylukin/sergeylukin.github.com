@@ -1,0 +1,22 @@
+.Button {
+  font-size: 20px;
+  line-height: 23px;
+  color: #8A9BA7;
+  border: 4px solid #8A9BA7;
+  font-weight: bold;
+  background-color: transparent;
+  text-decoration: none;
+  transition: background 0s ease 0s, color 0.5s ease 0s;
+  font-family: sans-serif;
+  cursor: pointer;
+
+  display: inline-block;
+  padding: 1em;
+  text-align: center;
+  width: 100%;
+}
+
+.Button:hover {
+  background: #8A9BA7 none repeat scroll 0% 0%;
+  color: #FFF;
+}
