@@ -21,7 +21,7 @@ As of today, I'm full-time employee and am not looking for a new job.
 About
 -----
 
-I develop software. Most of the time I build stuff for Web. In my free time I read books from O'Reilly, watch screencasts from PeepCode, read tuts by Envato and experiment with cutting edge technologies.
+{{ site.author.about }}
 
 Most of the code I write for fun is available on my [Github profile](https://github.com/sergeylukin)
 
