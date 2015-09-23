@@ -364,8 +364,13 @@ a.more:hover {
 /*
  * Social Links
  */
-.social-icons {
-  text-align: center;
+.SocialIcons {
+  margin: 0 auto 1em;
+}
+.SocialIcons-title {
+}
+.SocialIcons-value {
+  padding-left: 5px;
 }
 a.social-icon {
     text-indent: -9999px;
@@ -378,6 +383,12 @@ a.social-icon {
     /* color: #8a9ba7; */
     color: #7D8A97;
     border: none;
+}
+.social-icon.twitter-share {
+  color: rgba(47, 194, 239, 0.8);
+}
+.social-icon.twitter-share:hover {
+  color: rgba(47, 194, 239, 1);
 }
 a.social-icon:hover {
     color: #babbbc;
@@ -464,9 +475,6 @@ a.social-icon:before {
 /* =============================================================================
    Article page specific Styles
    ========================================================================== */
-#disqus_thread {
-  margin-top: 2em;
-}
 #disqus_thread a {
   border-bottom: 0;
 }
@@ -509,7 +517,7 @@ a.social-icon:before {
 
 @media (min-width:534px) {
     body {
-        font-size: .9em;
+        font-size: 20px;
     }
 
     /* Icons */
@@ -548,23 +556,9 @@ a.social-icon:before {
         top: 0;
         line-height: 3.3em;
     }
-    .posts a:hover {
-        -webkit-transform: scale(1.1);
-        -moz-transform: scale(1.1);
-        -ms-transform: scale(1.1);
-        -o-transform: scale(1.1);
-        transform: scale(1.1);
-    }
 
     .experiments {
         margin-top: -1em;
-    }
-    .experiments a:hover {
-        -webkit-transform: scale(1.1);
-        -moz-transform: scale(1.1);
-        -ms-transform: scale(1.1);
-        -o-transform: scale(1.1);
-        transform: scale(1.1);
     }
 
     .section-title {
@@ -678,6 +672,6 @@ a.social-icon:before {
 }
 @media (min-width:780px) {
     body {
-        font-size: 1em;
+        font-size: 22px;
     }
 }
