@@ -32,52 +32,27 @@
 {{ content }}
 
 <footer>
-  <p class="social-icons cf">
-    {% for profile in site.author.profiles %}
-    <a href="{{ profile.url }}" class="social-icon {{ profile.class }}" data-icon="{{ profile.data_icon }}">{{ profile.name }}</a>
-    {% endfor %}
-    {% if site.author.GooglePlusID %}
-    <a rel="author" href="https://plus.google.com/{{ site.author.GooglePlusID }}?rel=author" style="display: none;">Google+</a>
-    {% endif %}
-  </p>
+  <table class="SocialIcons">
+    <tr>
+      <td class="SocialIcons-title">GitHub:</td>
+      <td class="SocialIcons-value"><a href="https://github.com/sergeylukin">https://github.com/sergeylukin</a></td>
+    </tr>
+    <tr>
+      <td class="SocialIcons-title">Twitter:</td>
+      <td class="SocialIcons-value"><a href="https://twitter.com/sergey_lukin">https://twitter.com/sergey_lukin</a></td>
+    </tr>
+    <tr>
+      <td class="SocialIcons-title">Email:</td>
+      <td class="SocialIcons-value"><a href="mailto:contact@sergeylukin.com">contact@sergeylukin.com</a></td>
+    </tr>
+  </table>
+  {% if site.author.GooglePlusID %}
+  <a rel="author" href="https://plus.google.com/{{ site.author.GooglePlusID }}?rel=author" style="display: none;">Google+</a>
+  {% endif %}
 </footer>
 
 <!-- Google Analytics -->
-<script type="text/javascript">var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-31126253-1']);_gaq.push(['_trackPageview']);(function() {var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script>
-
-{% if page.date %}
-{% include like_button_twitter.html %}
-{% include like_button_hackernews.html %}
-{% include disqus.html %}
-{% endif %}
-
-{% if page.id == 'vcard' %}
-<script
-  src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-<script src="js/plax.js"></script>
-<script>
-jQuery(document).ready(function() {
-  // Save container height
-  var diagramHeight = jQuery('.skills-diagram').height();
-  // Fetch and save coordinates
-  jQuery('.skills-diagram dt').each(function() {
-    var position = $(this).position();
-    $(this).data({top: position.top + 40, left: position.left});
-  });
-  // Apply new coordinates and switch to position: absolute
-  jQuery('.skills-diagram dt').each(function() {
-    $(this).css('top', $(this).data('top') + 'px');
-    $(this).css('left', $(this).data('left') + 'px');
-    $(this).css('position', 'absolute');
-  });
-  // Restore container height
-  $('.skills-diagram').css('height', diagramHeight + 'px');
-  // Enable parallax
-  $('.skills-diagram dt').plaxify();
-  $.plax.enable();
-});
-</script>
-{% endif %}
+<script type="text/javascript">var _gaq = _gaq || [];_gaq.push(['_setAccount', '{{ site.googleanalytics }}']);_gaq.push(['_trackPageview']);(function() {var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script>
 
 </body>
 </html>

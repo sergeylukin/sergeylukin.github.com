@@ -1,5 +1,6 @@
 permalink: /:year/:title
-baseurl: http://sergeylukin.com
+baseurl: /
+production_domain: http://sergeylukin.com
 markdown: kramdown
 title: "Sergey Lukin, Web Developer"
 description: "The personal website of web developer Sergey Lukin"
@@ -22,8 +23,6 @@ author:
       url: https://twitter.com/sergey_lukin
       class: twitter
       data_icon: t
-like_button_hackernews: false
-like_button_twitter: true
 disqus:
   enabled: true
   shortname: sergeylukin

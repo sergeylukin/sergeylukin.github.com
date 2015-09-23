@@ -9,10 +9,12 @@ layout: inner
   
   {{ content }}
 
-  {% if site.like_button_twitter %}
-  <!-- Tweet -->
-  <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
-  {% endif %}
+<!-- Tweet -->
+<div class="u-center">
+  <a href="http://twitter.com/share?url={{ site.production_domain }}{{ page.id }}&amp;text={{ page.title }}&amp;via=sergeylukin" data-icon="t"
+    class="social-icon twitter-share" title="Share this article on Twitter"
+    target="_blank">Tweet</a>
+</div>
 
 {% comment %}
   {% unless page.tags == empty %}
