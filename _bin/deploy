@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-jekyll build && \
+bundle exec jekyll build && \
 cd ./_site && \
 touch .nojekyll && \# Tell Github not to run Jekyll
 remote_repo=`git config remote.origin.url` && \
