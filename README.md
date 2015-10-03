@@ -7,10 +7,47 @@ Install project's Ruby dependencies
 $ bundle install
 ```
 
-Build and serve via `http://localhost:4000`:
+Install NodeJS dependencies
 
 ```
-$ bundle exec jekyll serve
+$ npm install
+```
+
+Make unoptimized build and serve it with auto-reloading via
+`http://localhost:9000`:
+
+```
+$ ./node_modules/gulp/bin/gulp.js
+```
+
+Run SCSS lint:
+
+```
+$ ./node_modules/gulp/bin/gulp.js scsslint
+```
+
+Run JS lint:
+
+```
+$ ./node_modules/gulp/bin/gulp.js scsshint
+```
+
+When adding images, run optimizer:
+
+```
+$ ./node_modules/gulp/bin/gulp.js optimize:images
+```
+
+Preview production-ready build:
+
+```
+$ ./node_modules/gulp/bin/gulp.js preview
+```
+
+Deploy production build:
+
+```
+$ ./node_modules/gulp/bin/gulp.js deploy
 ```
 
 Credits

@@ -1,9 +1,15 @@
-# Ignore Jekyll generated static website files
-_site
+# Ignore NodeJS packages
+node_modules/
 
-# Ignore any blog drafts
-_posts/*.draft.*
+# Ignore Ruby packages
+ruby_modules/
 
-# Ignore VIM temp files
-*.swp
+# Gulp brews both development and production
+# builds in `build/` directory, so let's not
+# includ it in our repo
+build/
 
+# gulp-gh-pages creates .publish/ directory
+# before pushing changes upstream, we don't
+# need it in our repository
+.publish/

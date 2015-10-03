@@ -1,6 +1,14 @@
 permalink: /:year/:title
-baseurl: /
-production_domain: http://sergeylukin.com
+url: "http://localhost:9000"
+baseurl: ""
+show_drafts: true
+future: true
+limit_posts: 0
+# Jekyll ignores dotfiles. Tell it not ignore this file
+# which we need in order to prevent Github (hosting) run
+# Jekyll against our build (we build it before deploying
+# on our end)
+include: [".nojekyll"]
 markdown: kramdown
 title: "Sergey Lukin, Web Developer"
 description: "The personal website of web developer Sergey Lukin"
