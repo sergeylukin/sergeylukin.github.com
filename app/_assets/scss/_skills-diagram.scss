@@ -1,0 +1,125 @@
+// Author: Sergey Lukin
+// URI: http://codepen.io/sergeylukin/pen/HqBms
+
+.skills-diagram {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 2em auto;
+  max-width: 35em;
+  text-align: center;
+
+  > dd {
+    // Hide inner attributes
+    display: none;
+  }
+
+  dt {
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 1px;
+    display: inline-block;
+    // set defaults to skill-2
+    height: 2em;
+    line-height: 2em;
+    transform: scale(1.2);
+    vertical-align: top;
+    width: 2em;
+
+    &:hover {
+      transform: scale(1.3);
+    }
+  }
+
+  // Provide 10 different sizes
+  .skill-2 {
+    background-color: rgba(201, 155, 129, .3);
+    border-color: rgba(201, 155, 129, 1);
+    color: rgba(201, 155, 129, 1);
+    height: 2em;
+    line-height: 2em;
+    width: 2em;
+  }
+
+  .skill-3 {
+    background-color: rgba(138, 138, 140, .3);
+    border-color: rgba(138, 138, 140, 1);
+    color: rgba(138, 138, 140, 1);
+    height: 3em;
+    line-height: 3em;
+    vertical-align: middle;
+    width: 3em;
+  }
+
+  .skill-4 {
+    background-color: rgba(46, 138, 75, .3);
+    border-color: rgba(46, 138, 75, 1);
+    color: rgba(46, 138, 75, 1);
+    height: 4em;
+    line-height: 4em;
+    width: 4em;
+  }
+
+  .skill-5 {
+    background-color: rgba(109, 182, 173, .3);
+    border-color: rgba(109, 182, 173, 1);
+    color: rgba(109, 182, 173, 1);
+    height: 5em;
+    line-height: 5em;
+    vertical-align: bottom;
+    width: 5em;
+  }
+
+  .skill-6 {
+    background-color: rgba(155, 78, 86, .3);
+    border-color: rgba(155, 78, 86, 1);
+    color: rgba(155, 78, 86, 1);
+    height: 6em;
+    line-height: 6em;
+    vertical-align: top;
+    width: 6em;
+  }
+
+  .skill-7 {
+    background-color: rgba(102, 131, 164, .3);
+    border-color: rgba(102, 131, 164, 1);
+    color: rgba(102, 131, 164, 1);
+    height: 7em;
+    line-height: 7em;
+    width: 7em;
+  }
+
+  .skill-8 {
+    background-color: rgba(234, 112, 97, .3);
+    border-color: rgba(234, 112, 97, 1);
+    color: rgba(234, 112, 97, 1);
+    height: 8em;
+    line-height: 8em;
+    vertical-align: bottom;
+    width: 8em;
+  }
+
+  .skill-9 {
+    background-color: rgba(177, 18, 2, .3);
+    border-color: rgba(177, 18, 2, 1);
+    color: rgba(177, 18, 2, 1);
+    height: 11em;
+    line-height: 11em;
+    width: 11em;
+  }
+
+  .skill-10 {
+    background-color: rgba(81, 112, 144, .3);
+    border-color: rgba(81, 112, 144, 1);
+    color: rgba(81, 112, 144, 1);
+    height: 14em;
+    line-height: 14em;
+    width: 14em;
+  }
+}
+
+// Support vertical mode
+.skills-diagram-vertical dt {
+  display: block;
+  // .25em is an equivalent to inline-block's horizontal whitespace margin
+  margin: .25em auto;
+}

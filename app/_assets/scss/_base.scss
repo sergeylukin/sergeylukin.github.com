@@ -24,11 +24,11 @@
  */
 @font-face {
   font-family: 'sergeylukin-icons';
-  src:url('../fonts/sergeyicons/sergeylukin-icons.eot');
-  src:url('../fonts/sergeyicons/sergeylukin-icons.eot?#iefix') format('embedded-opentype'),
-    url('../fonts/sergeyicons/sergeylukin-icons.woff') format('woff'),
-    url('../fonts/sergeyicons/sergeylukin-icons.ttf') format('truetype'),
-    url('../fonts/sergeyicons/sergeylukin-icons.svg#sergeylukin-icons') format('svg');
+  src:url('/assets/fonts/sergeyicons/sergeylukin-icons.eot');
+  src:url('/assets/fonts/sergeyicons/sergeylukin-icons.eot?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/sergeyicons/sergeylukin-icons.woff') format('woff'),
+    url('/assets/fonts/sergeyicons/sergeylukin-icons.ttf') format('truetype'),
+    url('/assets/fonts/sergeyicons/sergeylukin-icons.svg#sergeylukin-icons') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -38,7 +38,7 @@
     font-style: normal;
     font-weight: 400;
     src: local('Terminal Dosis Book'), local('TerminalDosis-Book'),
-    url('../fonts/terminaldosis/terminaldosis-webfont.woff') format('woff');
+    url('/assets/fonts/terminaldosis/terminaldosis-webfont.woff') format('woff');
 }
 
 /* Specify our unique fonts to different components */
@@ -60,7 +60,7 @@ body {
     background-color: #fff;
     background-repeat: repeat;
     background-attachment: scroll;
-    background-image: url(../img/grid_noise.png);
+    background-image: url(/assets/images/grid_noise.png);
 
     /* Use Body element as a content container */
     max-width: 35em;

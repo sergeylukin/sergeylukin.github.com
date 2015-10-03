@@ -11,7 +11,7 @@ layout: inner
 
 <!-- Tweet -->
 <div class="u-center">
-  <a href="http://twitter.com/share?url={{ site.production_domain }}{{ page.id }}&amp;text={{ page.title }}&amp;via=sergeylukin" data-icon="t"
+  <a href="http://twitter.com/share?url={{ site.url }}{{ page.id }}&amp;text={{ page.title }}&amp;via=sergeylukin" data-icon="t"
     class="social-icon twitter-share" title="Share this article on Twitter"
     target="_blank">Tweet</a>
 </div>
@@ -35,23 +35,10 @@ layout: inner
 <div id="disqus_thread"></div>
 <!-- An element a visitor can click if they <3 comments! -->
 <div class="u-center ShowCommentsButton">
-  <button class="Button js-show-comments-button">Show comments</button>
+  <button class="Button js-show-comments-button"
+    data-disqus-shortname="{{ site.disqus.shortname }}"
+    data-disqus-identifier="{{ page.id }}"
+    >Show comments</button>
 </div>
-<!-- Register comments show button click event handler -->
-<script type="text/javascript">
-document.querySelector('.js-show-comments-button').addEventListener('click', function() {
-  var disqus_shortname = '{{ site.disqus.shortname }}',
-      disqus_identifier = '{{ page.id }}',
-      that = this;
-
-  var s = document.createElement("script"),
-      url = "http://" + disqus_shortname + ".disqus.com/embed.js";
-  s.src = url;
-  document.body.appendChild(s);
-  s.onload = function() {
-    that.style.display = 'none';
-  };
-});
-</script>
 
 </article>
