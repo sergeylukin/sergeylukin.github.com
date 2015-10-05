@@ -22,8 +22,8 @@ module.exports = {
     sass:    srcAssets + '/scss/**/*.{sass,scss}',
     scripts: srcAssets + '/javascripts/**/*.js',
     images:  srcAssets + '/images/**/*',
-    sprites: srcAssets + '/images/**/*.png',
-    svg:     'vectors/*.svg'
+    fonts:   srcAssets + '/fonts/**/*',
+    svg:     srcAssets + '/svg/*.svg'
   },
 
   browsersync: {
@@ -36,7 +36,8 @@ module.exports = {
         developmentAssets + '/css/*.css',
         developmentAssets + '/js/*.js',
         developmentAssets + '/images/**',
-        developmentAssets + '/fonts/**'
+        developmentAssets + '/fonts/**',
+        developmentAssets + '/svg/**'
       ]
     },
     production: {
@@ -131,14 +132,38 @@ module.exports = {
     dest: developmentAssets + '/images'
   },
 
-  fonts: {
+  copyfonts: {
     development: {
       src:  srcAssets + '/fonts/**/*.{eot,woff,ttf,svg}',
       dest: developmentAssets + '/fonts'
     },
     production: {
-      src:  developmentAssets + '/fonts/**/*',
+      src:  srcAssets + '/fonts/**/*.{eot,woff,ttf,svg}',
       dest: productionAssets + '/fonts'
+    }
+  },
+
+  inlinesvg: {
+    development: {
+      src: development + '/**/*.html',
+      dest: development,
+      basePath: build
+    },
+    production: {
+      src: production + '/**/*.html',
+      dest: production,
+      basePath: production
+    }
+  },
+
+  copysvg: {
+    development: {
+      src:  srcAssets + '/svg/**/*.svg',
+      dest: developmentAssets + '/svg'
+    },
+    production: {
+      src:  srcAssets + '/svg/**/*.svg',
+      dest: productionAssets + '/svg'
     }
   },
 

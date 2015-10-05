@@ -11,9 +11,13 @@ layout: inner
 
 <!-- Tweet -->
 <div class="u-center">
-  <a href="http://twitter.com/share?url={{ site.url }}{{ page.id }}&amp;text={{ page.title }}&amp;via=sergeylukin" data-icon="t"
-    class="social-icon twitter-share" title="Share this article on Twitter"
-    target="_blank">Tweet</a>
+  <a href="http://twitter.com/share?url={{ site.url }}{{ page.id }}&amp;text={{ page.title }}&amp;via=sergeylukin"
+    class="TwitterShareButton" title="Share this article on Twitter"
+    target="_blank">
+    <svg class="TwitterSVGIcon">
+      <use xlink:href="/assets/svg/TwitterSVGIcon.svg#TwitterSVGIcon"></use>
+    </svg>
+  </a>
 </div>
 
 {% comment %}

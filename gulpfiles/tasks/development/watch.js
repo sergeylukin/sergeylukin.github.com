@@ -9,6 +9,6 @@ gulp.task('watch', ['browsersync'], function() {
   gulp.watch(config.sass,    ['sass', 'scsslint']);
   gulp.watch(config.scripts, ['scripts', 'jshint']);
   gulp.watch(config.images,  ['images']);
-  gulp.watch(config.svg,     ['fonts']);
-  gulp.watch(config.sprites, ['sprites']);
+  gulp.watch(config.fonts,   ['recopy:fonts']);
+  gulp.watch(config.svg,     ['reinline:svg']);
 });

@@ -13,13 +13,14 @@ gulp.task('build:production', function(callback) {
       'sass',
       'scripts',
       'images',
-      'fonts'
+      'copy:fonts:production',
+      'copy:svg:production'
     ],
     'base64',
     [
       'optimize:css',
       'optimize:js',
-      'fonts:production'
+      'inline:svg:production'
     ],
     'inlinesource:production',
     'revision',

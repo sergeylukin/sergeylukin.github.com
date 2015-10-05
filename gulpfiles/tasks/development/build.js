@@ -13,9 +13,13 @@ gulp.task('build', function(callback) {
       'sass',
       'scripts',
       'images',
-      'fonts'
+      'copy:fonts',
+      'copy:svg'
     ],
-    'base64',
+    [
+      'base64',
+      'inline:svg'
+    ],
     callback
   );
 });
