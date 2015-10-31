@@ -13,3 +13,8 @@ build/
 # before pushing changes upstream, we don't
 # need it in our repository
 .publish/
+
+# This helps Jekyll keep track of which files have not been modified since the
+# site was last built, and which files will need to be regenerated on the next
+# build. No need to track this file in repo.
+.jekyll-metadata
