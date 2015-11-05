@@ -108,7 +108,7 @@ Here is my <a href="https://vimeo.com/144437942">video recording of
 EZ-Flash IV in action</a>:
 
 <iframe src="https://player.vimeo.com/video/144437942" width="500" height="281"
-class="u-absoluteCenter"
+style="max-width: 500px" class="u-absoluteCenter u-parentWidth"
 frameborder="0" webkitallowfullscreen mozallowfullscreen
 allowfullscreen></iframe>
 
