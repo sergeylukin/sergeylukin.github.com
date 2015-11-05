@@ -4,7 +4,7 @@ tags: gaming, gameboy
 title: "Collecting favorite Nintendo games in one cartridge"
 ---
 
-## Intro
+## Preface
 
 I love retro video games and the history of video games. Among my favorites are
 those made for all models of Nintendo Gameboy handhelds that were
@@ -50,8 +50,8 @@ these days. Here are some of them in alphabetical order:
 
 The list goes on and on. Besides titles released by Nintendo there are
 ones developed independently these days by individuals who only release
-digital ROMs that can be downloaded and executed in an emulator. For instance,
-check out this
+digital ROMs that can be freely downloaded and executed in an emulator. For
+instance, check out this
 [Flappy Bird game for Gameboy Advance](http://www.jayvanhutten.com/flappy/):
 
   [![Flappy Bird for Gameboy Advance](/images/game_screenshot-flappybird.png){: .u-absoluteCenter .u-parentWidth }{:style="max-width: 400px"}](http://www.jayvanhutten.com/flappy/)
@@ -65,11 +65,11 @@ Advance collection in one cartridge?
 Luckily, there is a solution I was happy to discover lately -
 [EZ-Flash IV](http://www.ezflash.cn/).
 It looks like a normal GBA cartridge. It is a very special cartridge however.
-What it does is it reads Gameboy Advance games ROMs (files that, when
-loaded into a console emulator, play a video game) from a microSD card (with up
+It reads Gameboy Advance games ROMs (files that, when loaded into a console
+emulator, play a video game) from a microSD card (with up
 to 32GB of capacity) just like any other GBA emulator would and runs games
 right in bare Gameboy Advance with amazingly good performance. But please note
-that it's still illegal to download ROMs from the Internet you don't have a license
+that it's still illegal to keep ROMs on your storage you don't have a license
 for. Having a license means simply owning a physical copy of authentic game cartridge.
 So please be responsible and read [legal information about ROMs and Emulation on official Nintendo
 website](https://www.nintendo.com/corp/legal.jsp) before proceeding.
@@ -83,19 +83,19 @@ I received mine from
 very well so far. The only complaint I have is about the quality of cartridge
 casing which is not compared to the quality of original Nintendo's cartridges
 unfortunately. Besides, it's an amazing addition to my Gameboy collection. I keep
-all my already owned GB/GBC/GBA games in EZ-Flash IV and can easily run
-license-free ROMs on real hardware.
+my already owned GB/GBC/GBA games in EZ-Flash IV and can easily run
+license-free ROMs released by independent developers on real hardware.
 
 ![EZ-Flash IV](/images/ezflash.jpg){: .u-absoluteCenter .u-parentWidth }{:style="max-width: 400px"}
 
 In order to run original Gameboy / Gameboy Color games on EZ-Flash IV,
-they need to be emulated. I've accomplished that with
+they need to be emulated. It can be accomplished with
 [Gameboy Emulator](http://www.webpersona.com/goomba/)
 and [Gameboy Color Emulator](http://www.dwedit.org/gba/goombacolor.php).
 Both emulators take GB/GBC ROMs and export GBA-compatible ROM. The good
 thing about this is that you
-can benefit from what the emulation provides you with, like for example
-being able to save/load game progess state at at any given point.
+can benefit from what the emulation provides you with, like being able
+to save/load game progess state at at any given point.
 Say, you're playing Super Mario Land (which is an amazing Gameboy title by the
 way!) for
 10 minutes and suddenly need to go to do some other things. By running game
@@ -118,9 +118,10 @@ EZ-Flash IV is very convenient. I like it a lot. The only thing that makes
 me worry about EZ-Flash IV and availability of GB/GBC/GBA ROMs online is
 that it can make some people believe that there is
 no need to own physical cartridges. Please note that it is still illegal
-to download Nintendo ROMs from the Internet if you don't have a license for
-them. Obtain a physical copy of a game before trying it out. Don't like the
-game? Sell the cartridge on eBay. Like it? Keep it on shelf and play it
-via EZ-Flash IV. Owning physical copies of your favorite titles and keeping
+to download Nintendo ROMs from the Internet or get them from anywhere
+else if you don't own a license. Obtain a physical copy of a
+game before trying it out. Don't like the game? Sell the cartridge on eBay.
+Like it? Keep it on shelf and play it along with other great games via
+EZ-Flash IV. Owning physical copies of your favorite titles and keeping
 them on the shelf is actually a very satisfiying feeling. It also demonstrates
 how serious you are about your little hobby :)
