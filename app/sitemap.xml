@@ -10,10 +10,10 @@ sitemap:
   {% for post in site.posts %}
   <url>
     <loc>{{ site.baseurl }}{{ post.url }}</loc>
-    {% if post.lastmod == null %}
-    <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
+    {% if post.last_modified_at %}
+      <lastmod>{{ post.last_modified_at | date_to_xmlschema }}</lastmod>
     {% else %}
-    <lastmod>{{ post.lastmod | date_to_xmlschema }}</lastmod>
+      <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
     {% endif %}
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

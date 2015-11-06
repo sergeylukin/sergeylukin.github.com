@@ -3,7 +3,6 @@ layout: post
 tags: [git, deployment, workflow]
 description: "How to integrate GIT in a team that is not ready to fully use VCS yet"
 title: Lazy GIT integration
-lastmod: 2013-06-20T00:00:00+00:00
 ---
 
 <div class="warning-box" markdown="1">

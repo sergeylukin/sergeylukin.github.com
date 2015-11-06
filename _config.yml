@@ -10,6 +10,8 @@ limit_posts: 0
 # on our end)
 include: [".nojekyll"]
 markdown: kramdown
+gems:
+  - jekyll-last-modified-at
 title: "Sergey Lukin, Web Developer"
 description: "The personal website of web developer Sergey Lukin"
 keywords: [web developer, PHP, Ruby, JavaScript, CSS, SEO, Unix, VIM, GIT, Apache]

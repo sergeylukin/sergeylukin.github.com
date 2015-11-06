@@ -3,7 +3,6 @@ layout: post
 tags: [yeoman, freebsd]
 title: "Yeoman on FreeBSD 9"
 description: "Step-by-step guide on how I installed Yeoman on FreeBSD 9"
-lastmod: 2012-11-23T00:00:00+00:00
 ---
 
 Preface
