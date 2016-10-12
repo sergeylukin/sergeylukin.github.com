@@ -1,5 +1,3 @@
-# [Phenomic](https://github.com/MoOx/phenomic) phenomic-theme-base
-
 ## Install dependencies
 
 ```sh
@@ -16,4 +14,10 @@ npm start
 
 ```sh
 npm run build
+```
+
+## Deploy
+
+```sh
+npm run deploy
 ```
