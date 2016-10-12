@@ -2,6 +2,7 @@
 title: Styling the first N HTML elements
 date: 2013-12-29
 layout: Post
+route: 2013/styling-first-n-html-elements
 image: http://images.wisegeek.com/html-screen.jpg
 primaryColor: "#e3abab"
 secondaryColor: "rgba(0, 0, 0, 0.6)"
