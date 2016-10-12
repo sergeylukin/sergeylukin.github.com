@@ -1,0 +1,15 @@
+@import "../../variables";
+
+.wrapper {
+  box-shadow: 0px 10px 60px 0px rgba(0, 0, 0, .15);
+}
+
+.container {
+  min-height: 100vh;
+}
+
+.padding {
+  @media only screen and (min-width: $medium-screen-breakpoint) {
+    padding: 2rem;
+  }
+}

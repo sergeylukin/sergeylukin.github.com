@@ -1,0 +1,151 @@
+@import "../../variables";
+
+.Project {
+  //flex: 1 auto;
+  //width: 50%;
+  background-color: white;
+  position: relative;
+  overflow: hidden;
+
+  > h1,
+  > p {
+    color: rgba(0, 0, 0, .8);
+    background: white;
+    display: inline-block;
+    padding: 2rem 2.5rem;
+    // border: 1px solid rgba(0, 0, 0, .7);
+  }
+
+  .ProjectLauncher_container {
+    text-align: center;
+  }
+  .ProjectLauncher {
+    &:hover {
+      opacity: .9;
+    }
+    display: inline-block;
+    margin: 0 auto;
+    border-width: 3px;
+    border-radius: 0;
+    border-style: solid;
+    border-color: white;
+    color: white;
+    background-color: #ffaf5a;
+    padding: 10px 16px;
+    text-decoration: none !important;
+    line-height: 1.2;
+    > svg {
+      margin-left: 4px;
+
+      display: inline-block;
+      pointer-events: none;
+      vertical-align: bottom;
+      fill: white;
+
+      width: 14px;
+      height: 14px;
+      position: relative;
+      top: -2px;
+    }
+  }
+
+  z-index: 1;
+  &::before {
+    z-index: -1;
+    content: "";
+
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: block;
+    opacity: 1;
+  }
+  &.netwalk {
+    & h1, & p {
+      color: #fff;
+      background-color: #59ad60;
+      a {
+        color: #fff;
+      }
+    }
+    &::before {
+      background-image: url(https://lh3.googleusercontent.com/vudkNKGXws8k9TBrLh42KzVonlsFDIDM__G81vN5XRYRKZu0m1snDfsQgccQ3snKB42DOAuE5Fohkwf5Y3M3SobxrZNpt3_Bnc3qMagYzbmBpDSQPkgutgjaRzcisIIqzfkRkzLjnOZLu8E0APl6OlcuiY-8Ff2vYvp5X6XebkMHQrL9fRSy-Q-gAljo1CZ5S3R4ECtGa0ZrALxc3eyZu9TmAcn3C1FRGj-ynRYljT2Sxf0T9fICqQxSVawh6k7RslmlUFY7UOdW55yycGM9uJJGrQ92sk2Prm5LIuFe3uN9_29NYvHmjHT9_wLhvFSHXKbVEyFpr8Dru7a3uZwp7byMpR26w7OcKB7o04xcHEdTj01P0hU_YMacK7PhM_y6QVnZMvfnUGB5yfQ4pn-Hy82-KEzyVo-Yl1NEL_EFwsz_qSLEFGCvG0bI-1viDQLcy3IVDonwxkuP4VAPFokMO7Qqw9nfn_F-1WbJcE9782mG8B8ChD7WuyxmQwkD2KgFAqiTOdQ7FZqZhKSCeh3qbsKuoBnAv3jq41BeQsNzgBuBjCgLpD1TcWa-yKHPJVkBiKLYmhUsbSLW8Oz8t0eim15NwltBn-pdNn1pneRKXa3sbmnw=w794-h464-no);
+      background-size: 2000px;
+      opacity: 0.5;
+      filter: blur(3px) grayscale(50%);
+    }
+    .ProjectLauncher {
+      border-color: #2a8632;
+      background-color: #59ad60;
+    }
+  }
+  &.welcometotelaviv {
+    & h1, & p {
+      color: #001854;
+      background-color: #81dab7;
+      a {
+        color: #fff;
+      }
+    }
+    &::before {
+      background-image: url(https://pbs.twimg.com/media/CGYPuzoU8AAmVh_.jpg:large);
+    }
+    .ProjectLauncher {
+      background-color: #81dab7;
+    }
+  }
+  &.rocket {
+    & h1, & p {
+      color: #806d34;
+      background-color: #fbd14f;
+      a {
+        color: #806d34;
+      }
+    }
+    &::before {
+      opacity: .8;
+      background-image: url(http://a.disquscdn.com/uploads/mediaembed/images/2182/703/original.jpg);
+    }
+    .ProjectLauncher {
+      color: #806d34;
+      border-color: #c78752;
+      svg {
+        fill: #806d34;
+      }
+    }
+  }
+  &.charts {
+    & h1, & p {
+      color: #364d67;
+      background-color: #83afe0;
+      a {
+        color: #fff;
+      }
+    }
+    &::before {
+      opacity: .8;
+      background-image: url(http://codropspz.tympanus.netdna-cdn.com/codrops/wp-content/uploads/2012/05/3dBarChart.jpg);
+    }
+    .ProjectLauncher {
+      background-color: #83afe0;
+    }
+  }
+
+  @media only screen and (min-width: $medium-screen-breakpoint) {
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, .15);
+  }
+  margin: 0;
+  padding: 8vw;
+  @media only screen and (min-width: $medium-screen-breakpoint) {
+    padding: 3vw 4vw;
+    margin: 0;
+    //    margin-left: 6vmin;
+    //    margin-right: 6vmin;
+  }
+
+
+}

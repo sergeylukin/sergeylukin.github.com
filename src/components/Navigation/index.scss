@@ -1,0 +1,243 @@
+@import "../../variables";
+
+.nav {
+  display: flex;
+  flex-direction: row;
+}
+
+
+.navigation {
+  position: absolute;
+  top: 1rem;
+  left: 10vw;
+  display: none;
+  @media only screen and (min-width: $medium-screen-breakpoint) {
+    display: block;
+  }
+  &:hover {
+    opacity: 0.5;
+  }
+}
+.backLinks {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  white-space: nowrap;
+  position: relative;
+  margin-bottom: 0vw;
+  margin-left: 5vw;
+  @media only screen and (min-width: $medium-screen-breakpoint) {
+    margin-bottom: 0;
+    margin-left: 0;
+  }
+}
+.backArrowLink {
+  display: inline-block;
+  color: inherit;
+  margin: 0.5em;
+  padding: 0.5em;
+}
+.backArrow {
+  display: block;
+  width: 1.2rem;
+  height: 1.2rem;
+  @media only screen and (min-width: $medium-screen-breakpoint) {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+  margin: 0 auto;
+  fill: currentColor;
+}
+.homeLink {
+  display: inline-block;
+  color: inherit;
+  margin: 0.7em 0;
+  padding: 0;
+  @media only screen and (min-width: $medium-screen-breakpoint) {
+    margin: 0.5em;
+    padding: 0.5em;
+  }
+  &::after {
+    position: absolute;
+
+    top: 25%;
+    @media only screen and (min-width: $medium-screen-breakpoint) {
+      top: 15%;
+    }
+
+    left: 3.7rem;
+    @media only screen and (min-width: $medium-screen-breakpoint) {
+      left: 6.0rem;
+    }
+
+    height: 50%;
+    @media only screen and (min-width: $medium-screen-breakpoint) {
+      height: 70%;
+    }
+
+    width: 1px;
+    background: currentColor;
+    opacity: 0.7;
+    content: '';
+    transform: rotate3d(0, 0, 1, 22.5deg);
+  }
+}
+
+.smallScreenNavigation {
+  display: block;
+  &:hover {
+    opacity: 0.5;
+  }
+  @media only screen and (min-width: $medium-screen-breakpoint) {
+    display: none;
+  }
+  position: absolute;
+  top: 1.8rem;
+  left: 10vw;
+  a {
+    color: black;
+  }
+
+  .backLinks {
+    margin-left: 0;
+  }
+}
+
+.homeIcon {
+  display: block;
+  width: 1.8rem;
+  height: 1.8rem;
+  @media only screen and (min-width: $medium-screen-breakpoint) {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+  margin: 0 auto;
+  fill: currentColor;
+}
+
+.menu {
+  position: absolute;
+  top: 1rem;
+  right: 15vw;
+  padding: .2rem 0 1rem 1rem;
+  font-family: "montserrat";
+  margin: 0;
+  ul {
+    padding: 0;
+  }
+  li {
+    list-style-type: none;
+    display: inline-block;
+    padding: 0 1rem 0 0;
+  }
+  a {
+    color: black;
+  }
+
+  display: none;
+  @media only screen and (min-width: $medium-screen-breakpoint) {
+    display: block;
+  }
+}
+
+.fullWidthMenu {
+  composes: menu;
+  @media only screen and (max-width: $medium-screen-breakpoint) {
+    width: 100%;
+    text-align: center;
+    left: 0;
+    right: auto;
+    padding: 0;
+    li:last-child {
+      padding-right: 0;
+    }
+  }
+}
+
+
+
+
+.checkbox {
+  display: none;
+}
+
+.section {
+  @media only screen and (min-width: $medium-screen-breakpoint) {
+    display: none;
+  }
+  overflow: auto;
+  .checkbox:checked ~ & {
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-color: rgba(255, 255, 255, 1);
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+}
+.toggle {
+  width: 3rem;
+  height: 3rem;
+  position: fixed;
+  top: 2.2rem;
+  right: 14vw;
+
+  z-index: 3;
+
+  position: fixed;
+  cursor: pointer;
+
+  .checkbox:checked ~ .section & {
+    .one {
+      transform: rotate(45deg) translate(7px, 7px);
+    }
+
+    .two {
+      opacity: 0;
+    }
+
+    .three {
+      transform: rotate(-45deg) translate(8px, -10px);
+    }
+  }
+}
+
+.one,
+.two,
+.three{
+  width: 100%;
+  height: 0.2rem;
+  background: black;
+  margin: 0.8rem auto;
+  backface-visibility: hidden;
+  transition: transform 0.3s;
+}
+
+.overlayNavigation {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  margin: 4em auto;
+  text-align: center;
+
+  display: none;
+  .checkbox:checked ~ .section & {
+    display: block;
+  }
+
+  a {
+    transition: background-color 0.5s;
+    text-decoration: none;
+    color: black;
+    font-size: 3em;
+    font-family: "Montserrat", sans-serif;
+    line-height: 1.5;
+    width: 100%;
+    display: block;
+    &:hover {
+      background-color: rgba(255, 255, 255, 1);
+    }
+  }
+}

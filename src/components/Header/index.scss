@@ -1,0 +1,69 @@
+@import "../../variables";
+
+.normal {
+  position: relative;
+  padding: 8rem 5vw 45px;
+
+  @media only screen and (min-width: $medium-screen-breakpoint) {
+    padding: 8rem 15vw;
+  }
+
+}
+
+.bottomGradient {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 25vh;
+  background: linear-gradient(0deg, rgba(0,0,0,.04) 5%, transparent);
+  z-index: -1;
+}
+
+.minimal {
+  composes: normal;
+  padding-top: 0;
+  padding-bottom: 4vw;
+}
+
+.carpet {
+  position: absolute;
+  top: 0;
+  left: 10vw;
+  width: calc(100% - 14.2vw - 3vw - 3vw);
+  display: none;
+
+  @media only screen and (min-width: $medium-screen-breakpoint) {
+    display: block;
+    width: $carpet-width;
+  }
+
+  height: 100%;
+  background-color: white;
+  @media only screen and (min-width: $medium-screen-breakpoint) {
+    background-color: $carpet-color;
+  }
+  z-index: -1;
+}
+
+.smallScreenCarpet {
+  composes: carpet;
+  display: block;
+  @media only screen and (min-width: $medium-screen-breakpoint) {
+    display: none;
+  }
+}
+
+.smallScreenBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  background-color: #f6cc4c;
+  @media only screen and (min-width: $medium-screen-breakpoint) {
+    display: none;
+  }
+}

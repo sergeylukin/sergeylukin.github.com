@@ -1,0 +1,54 @@
+@import "../../variables";
+
+/**
+ * driveway.css - pure CSS masonry layouts aid.
+ */
+.ml {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-column-count: 1;
+  -moz-column-count: 1;
+  column-count: 1;
+  -webkit-column-gap: 0;
+  -moz-column-gap: 0;
+  column-gap: 0;
+  position: relative;
+}
+.ml * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+@media (min-width: $xlarge-screen-breakpoint) {
+  .ml {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+  }
+}
+.xxlarge2items {
+  @media (min-width: $xxlarge-screen-breakpoint) {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+  }
+}
+.xxlarge3items {
+  @media (min-width: $xxlarge-screen-breakpoint) {
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
+  }
+}
+@media (min-width: $medium-screen-breakpoint) {
+  .ml_pnl {
+    padding: 2rem;
+  }
+}
+@media (min-width: $xlarge-screen-breakpoint) {
+  .ml_pnl {
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    overflow: hidden;
+  }
+}

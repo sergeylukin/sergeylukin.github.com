@@ -1,0 +1,24 @@
+@import "../../variables";
+
+.root {
+  color: #266168;
+
+  @media only screen and (min-width: $medium-screen-breakpoint) {
+    color: rgba(0, 0, 0, .6);
+  }
+
+  overflow: auto;
+  text-align: center;
+  padding: 2vmax;
+  font-size: 1.8rem;
+
+  .love {
+    color: #ff6032;
+    font-size: 2.2rem;
+  }
+
+  p {
+    display: inline-block;
+    padding: .5rem 1rem;
+  }
+}

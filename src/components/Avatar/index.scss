@@ -1,0 +1,98 @@
+@import "../../variables";
+
+.avatar {
+  > h1 {
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    position: fixed;
+  }
+}
+
+.small {
+  composes: avatar;
+  width: 100%;
+  height: 100%;
+  img {
+    transition: box-shadow .3s;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, .1), 0 2px 5px 4px rgba(255, 255, 255, .2);
+    @media only screen and (min-width: $medium-screen-breakpoint) {
+      box-shadow: 0 0 0 2px #d7ac2a, 0 2px 5px 4px rgba(255, 255, 255, .2);
+    }
+  }
+  &:hover img {
+    @media only screen and (min-width: $medium-screen-breakpoint) {
+      box-shadow: 0 0 0 2px #d7ac2a, 0 2px 5px 6px rgba(255, 255, 255, .4);
+    }
+  }
+}
+
+.big {
+  composes: avatar;
+
+  @media only screen and (min-width: $medium-screen-breakpoint) {
+    position: absolute;
+    bottom: 0;
+    left: 2vmin;
+  }
+
+  @media only screen and (min-width: $xlarge-screen-breakpoint) {
+    top: 1vmin;
+    bottom: auto;
+  }
+
+  background-color: white;
+
+  @media only screen and (min-width: $medium-screen-breakpoint) {
+    background-color: transparent;
+  }
+
+  border-bottom: 1px solid #d1d1d1;
+  @media only screen and (min-width: $medium-screen-breakpoint) {
+    border-bottom: none;
+  }
+
+  @media only screen and (min-width: $medium-screen-breakpoint) {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  @media only screen and (min-width: $xlarge-screen-breakpoint) {
+    display: block;
+  }
+
+  height: calc(100vw - 10vw);
+  //  height: 100vw;
+
+  @media only screen and (min-width: $medium-screen-breakpoint) {
+    position: absolute;
+    width: $carpet-width;
+    height: 100%;
+  }
+
+  text-align: center;
+
+  overflow: hidden;
+  @media only screen and (min-width: $medium-screen-breakpoint) {
+    overflow: visible;
+  }
+
+  & img {
+    margin-top: 1rem;
+    @media only screen and (min-width: $medium-screen-breakpoint) {
+      margin-top: 0;
+    }
+
+    width: 90%;
+    @media only screen and (min-width: $medium-screen-breakpoint) {
+      width: 100%;
+    }
+
+    text-align: center;
+    vertical-align: bottom;
+    @media only screen and (min-width: $medium-screen-breakpoint) {
+      height: auto;
+    }
+
+  }
+}

@@ -1,0 +1,71 @@
+@import "../../variables";
+
+.info {
+  padding: 8vw 8vw calc(8vw - 10px); // 10px is padding of social icons
+  @media only screen and (min-width: $medium-screen-breakpoint) {
+    padding: 3vw 4vw calc(3vw - 10px);  // 10px is padding of social icons
+  }
+
+  color: rgba(0, 0, 0, .6);
+  background-color: white;
+
+  @media only screen and (min-width: $medium-screen-breakpoint) {
+    min-height: 30vh;
+    margin: 0 0 0 $carpet-width;
+  }
+}
+
+.PersonalDetails {
+  margin: 0;
+}
+.PersonalDetails dt {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.6rem;
+  @media only screen and (min-width: $medium-screen-breakpoint) {
+    font-size: 1.4rem;
+  }
+  @media only screen and (min-width: $large-screen-breakpoint) {
+    font-size: 1.6rem;
+  }
+  color: #d1d1d1;
+}
+.PersonalDetails_nameValue {
+  font-size: 2.8rem;
+  @media only screen and (min-width: $medium-screen-breakpoint) {
+    font-size: 1.8rem;
+  }
+  @media only screen and (min-width: $large-screen-breakpoint) {
+    font-size: 2.8rem;
+  }
+}
+.PersonalDetails_occupationValue {
+  font-size: 2.0rem;
+  @media only screen and (min-width: $medium-screen-breakpoint) {
+    font-size: 1.4rem;
+  }
+  @media only screen and (min-width: $large-screen-breakpoint) {
+    font-size: 2.4rem;
+  }
+}
+.PersonalDetails_aboutValue {
+  font-weight: 400;
+  font-size: 1.5rem;
+  @media only screen and (min-width: $medium-screen-breakpoint) {
+    font-size: 1.4rem;
+  }
+  @media only screen and (min-width: $large-screen-breakpoint) {
+    font-size: 1.8rem;
+  }
+}
+.PersonalDetails_occupation,
+.PersonalDetails_about,
+.PersonalDetails_location
+{
+  margin-top: 2rem;
+}
+.PersonalDetails dd {
+  margin: 0;
+}
+.PersonalDetails dd p:first-child {
+  margin-top: 0;
+}
