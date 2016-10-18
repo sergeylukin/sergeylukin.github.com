@@ -24,9 +24,9 @@ const Info = (props) => (
             + " based in Tel Aviv, Israel." }
         </p>
         <p>
-          { "#music, #programming, #sport, #ui, #ux"
-            + " are all part of what I'm mostly passionate"
-            + " about...in alphabetical order :)" }
+          { "I'm mostly passionate about #music, #programming,"
+            + " #sport, #ui, #ux"
+            + " ...in alphabetical order :)" }
         </p>
         { props.children }
       </dd>
