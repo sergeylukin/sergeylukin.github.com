@@ -10,7 +10,7 @@ const Resume = (props) => (
   <InnerPage {...props} nopadding>
     <div className={ styles.root }>
       <h1>
-        { "I’m a novice designer and experienced web builder who is"
+        { "I’m experienced web builder and novice designer who is"
           + " passionate about what he is doing"
         }
       </h1>
@@ -54,7 +54,7 @@ const Resume = (props) => (
       <p>
         { "During my free time I read books from O’Reilly, watch screencasts"
           + " from Tuts+, Upcase, PluralSight and experiment with cutting edge"
-          + " technologies myself. See what I did myself at " }
+          + " technologies myself. See what I did at " }
         <Link to="/lab">{ "my projects" }</Link>
         { " page" }
       </p>
