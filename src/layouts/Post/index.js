@@ -106,7 +106,7 @@ const Post = (
                   </p>
                   <p>
                     { "Read more about me in my " }
-                    <Link to="/resume">{ "Résumé" }</Link>
+                    <Link to="/resume.html">{ "Résumé" }</Link>
                   </p>
                   <div>
                     <SocialLinks stripped className={ styles.SocialLinks } />
