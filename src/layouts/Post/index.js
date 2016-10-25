@@ -3,10 +3,11 @@ import { Link } from "react-router"
 import { BodyContainer } from "phenomic"
 // import Svg from "react-svg-inline"
 
-import Header from "../../components/Header"
-import Footer from "../../components/Footer"
 import Card from "../../components/Card"
 import SocialLinks from "../../components/SocialLinks"
+import Page from "../Page"
+import Header from "../../components/Header"
+import Footer from "../../components/Footer"
 import Navigation from "../../components/Navigation"
 
 import styles from "./index.scss"
@@ -15,23 +16,23 @@ import Avatar from "../../components/Avatar"
 
 import moment from "moment"
 
-const Post = (
-  {
+const Post = (props) => {
+  const {
     head,
     body,
-  }) => {
+  } = props
 
   const formattedDate = moment(head.date).format("dddd, MMMM Do YYYY")
 
   return (
-    <div>
+    <Page {...props}>
       <div className={ styles.wrapper }>
         <Header className={ styles.container }
           carpetColor={ head.primaryColor ? head.primaryColor : null }
           noBottomGradient
         >
           <Navigation {...head} />
-          <Card carpet>
+          <Card style={ styles.root }>
             <div className={ styles.banner }>
               <div className={ styles.background }
                 style={ {
@@ -118,7 +119,7 @@ const Post = (
         </Header>
       </div>
       <Footer />
-    </div>
+    </Page>
   )
 }
 

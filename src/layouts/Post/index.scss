@@ -29,12 +29,36 @@
 
 .container {
   min-height: 100vh;
-  max-width: 120rem;
-  margin: 0 auto;
+}
+
+.root {
+  background: white;
+  color: #3a3a3a;
+  h1 {
+    line-height: 1.25em;
+    font-size: 2.4rem;
+    font-weight: normal;
+    @media only screen and (min-width: $xlarge-screen-breakpoint) {
+      font-size: 4.4rem;
+    }
+  }
+  p {
+    font-size: 2rem;
+  }
+}
+
+.wrapper {
+}
+
+.container {
+  min-height: 100vh;
 }
 
 .banner {
-  padding: 3rem;
+  padding: 2rem 5vw;
+  @media only screen and (min-width: $medium-screen-breakpoint) {
+    padding: 20rem 10vw;
+  }
   position: relative;
   background: white;
   z-index: 0;
@@ -48,6 +72,10 @@
   h1 {
     @media only screen and (min-width: $medium-screen-breakpoint) {
       display: inline-block;
+    }
+    font-size: 5rem;
+    @media only screen and (min-width: $medium-screen-breakpoint) {
+      font-size: 6.5rem;
     }
     padding: 2rem 2.5rem;
     background-color: $carpet-color;
@@ -133,13 +161,14 @@
 
 .content {
   font-size: 1.8rem;
+  padding: 2rem 5vw;
   @media only screen and (min-width: $medium-screen-breakpoint) {
     font-size: 2.2rem;
+    padding: 2rem 10vw;
   }
   font-family: sans-serif;
   color: #585858;
   background-color: white;
-  padding: 3rem;
   ol li, p {
     line-height: 1.5;
   }
