@@ -4,9 +4,14 @@ tags: [Ruby on Rails]
 title: "Ruby on Rails magic: models relation"
 date: 2013-02-18
 route: 2013/ruby-on-rails-magic-models-relation
-image: /assets/rails_models_relation.jpg
-primaryColor: "#F07830"
-secondaryColor: "#732b00"
+image: /assets/ruby-on-rails-magic-models-relation.jpeg
+imageUrl: https://unsplash.com/photos/PAykYb-8Er8
+imageAuthor: Ian Schneider
+imageAuthorUrl: https://unsplash.com/@goian
+imageProviderName: Unsplash
+imageProviderUrl: https://unsplash.com/
+primaryColor: "rgba(255, 214, 156, 0.8)"
+secondaryColor: "#47281e"
 linksColor: "#4878A8"
 linksHoverColor: "#A8D8F0"
 ---

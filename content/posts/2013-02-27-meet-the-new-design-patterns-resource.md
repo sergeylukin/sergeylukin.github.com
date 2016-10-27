@@ -5,9 +5,14 @@ tags: ["design patterns", "agile patterns"]
 description: "Announcement of our new Design Patterns documentation resource"
 title: "Meet the new Design Patterns resource"
 route: 2013/meet-the-new-design-patterns-resource
-image: /assets/design_patterns.jpg
-primaryColor: "#235D23"
-secondaryColor: "#C6D5B0"
+image: /assets/meet-the-new-design-patterns-resource.jpeg
+imageUrl: https://unsplash.com/photos/E9aetBe2w40
+imageAuthor: Sam Schooler
+imageAuthorUrl: https://unsplash.com/@sam
+imageProviderName: Unsplash
+imageProviderUrl: https://unsplash.com/
+primaryColor: "rgba(59, 94, 151, .8)"
+secondaryColor: "#fdfaf4"
 linksColor: "#2C1E1E"
 linksHoverColor: "#C6D5B0"
 ---

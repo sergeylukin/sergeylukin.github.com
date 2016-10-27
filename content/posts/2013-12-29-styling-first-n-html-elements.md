@@ -3,11 +3,16 @@ title: Styling the first N HTML elements
 date: 2013-12-29
 layout: Post
 route: 2013/styling-first-n-html-elements
-image: http://images.wisegeek.com/html-screen.jpg
-primaryColor: "#e3abab"
-secondaryColor: "rgba(0, 0, 0, 0.6)"
-linksColor: "#ff6032"
-linksHoverColor: "#c52c00"
+image: /assets/styling-first-n-html-elements.jpeg
+imageUrl: https://unsplash.com/photos/MMJx78V7xS8
+imageAuthor: Steven Kamenar
+imageAuthorUrl: https://unsplash.com/@skamenar
+imageProviderName: Unsplash
+imageProviderUrl: https://unsplash.com/
+primaryColor: "rgba(207, 224, 233, .9)"
+secondaryColor: "#304232"
+linksColor: "#908f58"
+linksHoverColor: "#506240"
 ---
 
 Here's a little trick I learned today. Think of a table with rows.

@@ -6,9 +6,14 @@ title: "Yeoman on FreeBSD 9"
 description: "Step-by-step guide on how I installed Yeoman on FreeBSD 9"
 lastmod: 2012-11-23T00:00:00+00:00
 route: 2012/yeoman-on-freebsd-9
-image: /assets/yeoman_freebsd.jpg
-primaryColor: "#dad7b8"
-secondaryColor: "#656232"
+image: /assets/yeoman-on-freebsd-9.jpeg
+imageUrl: https://unsplash.com/photos/UdgvzNom0Xs
+imageAuthor: John Price
+imageAuthorUrl: https://unsplash.com/@johnprice
+imageProviderName: Unsplash
+imageProviderUrl: https://unsplash.com/
+primaryColor: "rgba(186, 77, 60, .9)"
+secondaryColor: "#dddce2"
 linksColor: "#2FCE03"
 linksHoverColor: "#FF3D84"
 ---

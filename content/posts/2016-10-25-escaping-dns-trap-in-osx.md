@@ -2,10 +2,15 @@
 title: Escaping DNS trap in OS X
 date: 2016-10-25
 layout: Post
-image: /assets/networksetup.jpg
+image: /assets/escaping-dns-trap-in-osx.jpg
+imageUrl: https://unsplash.com/photos/E4944K_4SvI
+imageAuthor: Buzz Andersen
+imageAuthorUrl: https://unsplash.com/@ldandersen
+imageProviderName: Unsplash
+imageProviderUrl: https://unsplash.com/
 route: 2016/escaping-dns-trap-in-osx
-primaryColor: "#abe3b0"
-secondaryColor: "#123e31"
+primaryColor: "rgba(195, 99, 90, .85)"
+secondaryColor: "#feedd0"
 linksColor: "#3292ff"
 linksHoverColor: "#0033c5"
 ---

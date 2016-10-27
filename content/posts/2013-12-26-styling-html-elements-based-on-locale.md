@@ -4,9 +4,14 @@ date: 2013-12-26
 tags: [css]
 title: "Styling HTML elements based on locale"
 route: 2013/styling-html-elements-based-on-locale
-image: /assets/css_locale.jpg
-primaryColor: "#424242"
-secondaryColor: "#E9E9E9"
+image: /assets/styling-html-elements-based-on-locale.jpeg
+imageUrl: https://unsplash.com/photos/g-AklIvI1aI
+imageAuthor: Steven Wei
+imageAuthorUrl: https://unsplash.com/@stevenwei
+imageProviderName: Unsplash
+imageProviderUrl: https://unsplash.com/
+primaryColor: "rgba(199, 253, 252, .9)"
+secondaryColor: "#485f5c"
 linksColor: "#3299BB"
 linksHoverColor: "#FF9900"
 ---

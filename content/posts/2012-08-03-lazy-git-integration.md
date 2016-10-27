@@ -6,9 +6,14 @@ description: "How to integrate GIT in a team that is not ready to fully use VCS 
 title: Lazy GIT integration
 lastmod: 2013-06-20T00:00:00+00:00
 route: 2012/lazy-git-integration
-image: /assets/lazy_git.jpg
-primaryColor: "#7DB4B5"
-secondaryColor: "#defeff"
+image: /assets/lazy-git-integration.jpeg
+imageUrl: https://unsplash.com/photos/TYIzeCiZ_60
+imageAuthor: Karl Fredrickson
+imageAuthorUrl: https://unsplash.com/@kfred
+imageProviderName: Unsplash
+imageProviderUrl: https://unsplash.com/
+primaryColor: "rgba(109, 63, 34, .9)"
+secondaryColor: "#e1c788"
 linksColor: "#680148"
 linksHoverColor: "#000000"
 ---

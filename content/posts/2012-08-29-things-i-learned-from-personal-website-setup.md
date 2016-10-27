@@ -4,9 +4,14 @@ date: 2012-08-29
 title: "Things I learned from personal website: setup"
 description: "Tips on setting up a static website with Jekyll and Github"
 route: 2012/things-i-learned-from-personal-website-setup
-image: /assets/website_building.jpg
-primaryColor: "#3A2C22"
-secondaryColor: "#d2b2a8"
+image: /assets/things-i-learned-from-personal-website-setup.jpg
+imageUrl: https://unsplash.com/photos/6PF6DaiWz48
+imageAuthor: Rayi Christian Wicaksono
+imageAuthorUrl: https://unsplash.com/@mumolabs
+imageProviderName: Unsplash
+imageProviderUrl: https://unsplash.com/
+primaryColor: "rgba(59, 59, 59, .8)"
+secondaryColor: "white"
 linksColor: "#FD6E8A"
 linksHoverColor: "#7C5D4A"
 tags: [jekyll, static website, github pages]

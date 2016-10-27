@@ -5,9 +5,14 @@ description: "A short way of rendering a partial for list of Model objects in th
 title: "Ruby on Rails magic: first impression"
 date: 2012-09-18
 route: 2012/ruby-on-rails-magic-first-impression
-image: /assets/rails_first_impression.jpg
-primaryColor: "#2C3B63"
-secondaryColor: "#95b2ff"
+image: /assets/ruby-on-rails-magic-first-impression.jpeg
+imageUrl: https://unsplash.com/photos/VLdaxYyXJvw
+imageAuthor: Sebastian Muller
+imageAuthorUrl: https://unsplash.com/@sebastianmuller
+imageProviderName: Unsplash
+imageProviderUrl: https://unsplash.com/
+primaryColor: "rgba(183, 97, 113, .8)"
+secondaryColor: "#f8e7cf"
 linksColor: "#848D82"
 linksHoverColor: "#FD6E8A"
 ---

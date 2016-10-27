@@ -4,9 +4,14 @@ date: 2013-11-18
 route: 2013/compiling-vim-with-python-support
 tags: [vim]
 title: "Compiling VIM with Python support"
-image: /assets/vim_python.jpg
-primaryColor: "#DDDED7"
-secondaryColor: "#222c52"
+image: /assets/compiling-vim-with-python-support.jpeg
+imageUrl: https://unsplash.com/photos/bk4HoBc4k60
+imageAuthor: Martin Ezequiel Sanchez
+imageAuthorUrl: https://unsplash.com/@mzeketv
+imageProviderName: Unsplash
+imageProviderUrl: https://unsplash.com/
+primaryColor: "rgba(157, 118, 65, .8)"
+secondaryColor: "#e7eff6"
 linksColor: "#C92020"
 linksHoverColor: "#88C6C9"
 ---
