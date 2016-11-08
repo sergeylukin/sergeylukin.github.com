@@ -135,8 +135,8 @@ const PagesList = () => {
             + " to do that in pure CSS and without images? The result"
             + " was even better than I thought. I was even invited by"
             + " Codrops to write " }
-          <a href="http://tympanus.net/codrops/2012/05/21/
-            animated-3d-bar-chart-with-css3/"
+          <a href={ "http://tympanus.net/codrops/2012/05/21/"
+            + "animated-3d-bar-chart-with-css3/" }
             target="_blank"
           >{ "an article" }</a>
           { " on that, that was even better as I could try myself"
