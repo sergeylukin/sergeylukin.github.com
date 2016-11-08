@@ -48,8 +48,7 @@ const PagesList = () => {
           + " first Tel Aviv YouGottaLoveFrontEnd 2015"
           + " conference challenge. See " }
           <a
-            href="https://github.com/YouGottaLoveFrontEnd
-            /challenge-2015/pull/9"
+            href="https://github.com/YouGottaLoveFrontEnd/challenge-2015/pull/9"
             target="_blank"
           >{ "my submission on GitHub" }</a>
           { " for more details. I went through many iterations"
