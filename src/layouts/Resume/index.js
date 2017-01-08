@@ -15,8 +15,7 @@ const Resume = (props) => (
         }
       </h1>
       <small>
-        { "Psst.. I've already found my dream job so I'm not looking for one"
-          + " atm ;)" }
+        { "Psst.. I'm currently looking for a full-time dream job ;)" }
       </small>
       <p>
         { "My name is Sergey Lukin. I was born and grew up in Saint-Petersburg"
