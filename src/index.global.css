@@ -7,7 +7,7 @@
 /*
  * box model like it should be
  *
- * http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+ * https://www.paulirish.com/2012/box-sizing-border-box-ftw/
  */
 html { box-sizing: border-box; }
 

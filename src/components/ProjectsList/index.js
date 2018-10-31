@@ -71,7 +71,7 @@ const PagesList = () => {
             + " scroll the page slower ;)" }
           </p>
         <div className={ styles.ProjectLauncher_container }>
-          <a href="http://sergeylukin.com/yougottalovefrontend"
+          <a href="/yougottalovefrontend"
             className={ styles.ProjectLauncher } target="_blank"
           >
             <span>{ "I want to see it" }</span>
@@ -92,7 +92,7 @@ const PagesList = () => {
         <h1>{ "Envato remix #2 challenge" }</h1>
         <p>
           { "Little project for " }
-          <a href="http://contests.envato.com/remix-02/index.html"
+          <a href="https://contests.envato.com/remix-02/index.html"
             target="_blank"
           >{ "Envato Remix #2 CSS challenge" }</a>
           { " that took place in July 2015. Lots of CSS tricks"
@@ -101,7 +101,7 @@ const PagesList = () => {
             + " a good thing sometimes :)" }
         </p>
         <div className={ styles.ProjectLauncher_container }>
-          <a href="http://sergeylukin.com/envatoremix2"
+          <a href="/envatoremix2"
             className={ styles.ProjectLauncher } target="_blank"
           >
             <span>{ "Show it to me" }</span>
@@ -127,7 +127,7 @@ const PagesList = () => {
             + " create functional buttons in pure HTML / CSS that"
             + " trigger styles change of other elements. And I came"
             + " across " }
-          <a href="http://jquery-3d.truematter.com/"
+          <a href="https://jquery-3d.truematter.com/"
             target="_blank"
           >{ "this experiment" }</a>
           { " that uses jQuery and images to create 3d bar chart."
@@ -135,7 +135,7 @@ const PagesList = () => {
             + " to do that in pure CSS and without images? The result"
             + " was even better than I thought. I was even invited by"
             + " Codrops to write " }
-          <a href={ "http://tympanus.net/codrops/2012/05/21/"
+          <a href={ "https://tympanus.net/codrops/2012/05/21/"
             + "animated-3d-bar-chart-with-css3/" }
             target="_blank"
           >{ "an article" }</a>
@@ -148,7 +148,7 @@ const PagesList = () => {
             + " (at least to me)." }
         </p>
         <div className={ styles.ProjectLauncher_container }>
-          <a href="http://tympanus.net/Tutorials/Animated3DBarChart/"
+          <a href="https://tympanus.net/Tutorials/Animated3DBarChart/"
             className={ styles.ProjectLauncher } target="_blank"
           >
             <span>{ "View project" }</span>
