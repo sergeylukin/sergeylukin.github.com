@@ -1,0 +1,187 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1" /><link rel="stylesheet" href="/phenomic.browser.5a379d9a7abc40fa4397.css" /><meta data-react-helmet="true" name="generator" content="Phenomic 0.17.12"/><meta data-react-helmet="true" property="og:site_name" content="sergeylukin"/><meta data-react-helmet="true" name="twitter:site" content="@sergey_lukin"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1"/><meta data-react-helmet="true" property="og:type" content="article"/><meta data-react-helmet="true" property="og:title" content="Yeoman on FreeBSD 9"/><meta data-react-helmet="true" property="og:url" content="https://sergeylukin.com/2012/yeoman-on-freebsd-9/"/><meta data-react-helmet="true" property="og:description" content="Step-by-step guide on how I installed Yeoman on FreeBSD 9"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:title" content="Yeoman on FreeBSD 9"/><meta data-react-helmet="true" name="twitter:creator" content="@sergey_lukin"/><meta data-react-helmet="true" name="twitter:description" content="Step-by-step guide on how I installed Yeoman on FreeBSD 9"/><meta data-react-helmet="true" name="description" content="Step-by-step guide on how I installed Yeoman on FreeBSD 9"/><title data-react-helmet="true">Yeoman on FreeBSD 9</title></head><body><div id="phenomic"><div data-reactroot="" data-reactid="1" data-react-checksum="-1675489744"><div hidden="" data-reactid="2"><!-- react-empty: 3 --><!-- react-empty: 4 --><style data-reactid="5">@-ms-viewport { width: device-width; }</style></div><div data-reactid="6"><!-- react-empty: 7 --><div class="_2u2eA" data-reactid="8"><header class="n5wat _3VHi5" data-reactid="9"><div class="P2FaT" style="background-color:rgba(186, 77, 60, .9);" data-reactid="10"></div><div class="_1XmuO P2FaT" data-reactid="11"></div><div class="cpZ87" style="background-color:rgba(186, 77, 60, .9);" data-reactid="12"></div><div class="_1CaZY" data-reactid="13"><div class="aJX1F" data-reactid="14"><a style="color:#dddce2;background-color:rgba(186, 77, 60, .9);" href="/" data-reactid="15"><div class="l63Fz" data-reactid="16"><span class="_2sEnw" data-reactid="17"><svg class="_1gRuu" viewBox="0 0 24 24" data-reactid="18"><polygon points="6.3,12.8 20.9,12.8 20.9,11.2 6.3,11.2
+                10.2,7.2 9,6 3.1,12 9,18 10.2,16.8" data-reactid="19"></polygon></svg></span><span class="_1L-6Q" data-reactid="20"><span class="SVGInline SVGInline--cleaned VDWWh" data-reactid="21"><svg class="SVGInline-svg SVGInline--cleaned-svg VDWWh-svg" viewBox="0 0 512 512">
+  <g>
+    <path d="M502.625,283.312L256,36.688L9.375,283.312c-12.5,12.5-12.5,32.75,0,45.25s32.75,12.5,45.25,0L64,319.188v156.125h384
+             V319.188l9.375,9.375c6.25,6.25,14.438,9.375,22.625,9.375s16.375-3.125,22.625-9.375
+             C515.125,316.062,515.125,295.812,502.625,283.312z M416,443.312h-96v-128H192v128H96V287.188l160-160l160,160V443.312z"/>
+  </g>
+</svg></span></span></div></a></div><div class="_29f-d" data-reactid="22"><style data-reactid="23">          ._29f-d a:hover {            color: #FF3D84;          }        </style><a href="/" data-reactid="24"><div class="l63Fz" data-reactid="25"><span class="_2sEnw" data-reactid="26"><svg class="_1gRuu" viewBox="0 0 24 24" data-reactid="27"><polygon points="6.3,12.8 20.9,12.8 20.9,11.2 6.3,11.2
+                10.2,7.2 9,6 3.1,12 9,18 10.2,16.8" data-reactid="28"></polygon></svg></span><span class="_1L-6Q" data-reactid="29"><span class="SVGInline SVGInline--cleaned VDWWh" data-reactid="30"><svg class="SVGInline-svg SVGInline--cleaned-svg VDWWh-svg" viewBox="0 0 512 512">
+  <g>
+    <path d="M502.625,283.312L256,36.688L9.375,283.312c-12.5,12.5-12.5,32.75,0,45.25s32.75,12.5,45.25,0L64,319.188v156.125h384
+             V319.188l9.375,9.375c6.25,6.25,14.438,9.375,22.625,9.375s16.375-3.125,22.625-9.375
+             C515.125,316.062,515.125,295.812,502.625,283.312z M416,443.312h-96v-128H192v128H96V287.188l160-160l160,160V443.312z"/>
+  </g>
+</svg></span></span></div></a></div><div class="_3C77l" data-reactid="31"><style data-reactid="32">          ._3C77l a:hover {            color: #FF3D84;          }        </style><ul data-reactid="33"><li data-reactid="34"><a href="/resume.html" data-reactid="35">Résumé</a></li><li data-reactid="36"><a href="/archive" data-reactid="37">Blog</a></li><li data-reactid="38"><a href="/lab" data-reactid="39">Projects</a></li></ul></div><div data-reactid="40"><input type="checkbox" autocomplete="off" class="_3q8dC" id="js-offcanvas-navigation-toggler" data-reactid="41"/><div class="_2r2gn" data-reactid="42"><label for="js-offcanvas-navigation-toggler" class="_3P5PR" data-reactid="43"><div class="hItdG" data-reactid="44"></div><div class="_3Gj57" data-reactid="45"></div><div class="_3AtAk" data-reactid="46"></div></label><nav data-reactid="47"><ul role="navigation" class="_3Eugv" data-reactid="48"><li data-reactid="49"><a href="/" data-reactid="50">Home</a></li><li data-reactid="51"><a href="/resume.html" data-reactid="52">Résumé</a></li><li data-reactid="53"><a href="/archive" data-reactid="54">Blog</a></li><li data-reactid="55"><a href="/lab" data-reactid="56">Projects</a></li></ul></nav></div></div></div><div class="MSG4a" data-reactid="57"><div class="_3Ikbj" data-reactid="58"><div class="_29I5C" style="background-image:url(/assets/yeoman-on-freebsd-9.jpeg);" data-reactid="59"></div><div data-reactid="60"><h1 style="color:#dddce2;background-color:rgba(186, 77, 60, .9);" data-reactid="61">Yeoman on FreeBSD 9</h1></div><div data-reactid="62"><time style="color:#dddce2;background-color:rgba(186, 77, 60, .9);" datetime="2012-11-19T00:00:00.000Z" data-reactid="63">Monday, November 19th 2012</time></div></div><div class="_20NZx" data-reactid="64"><style data-reactid="65">                  ._20NZx a {                    color:#2FCE03;                  }                </style><style data-reactid="66">                  ._20NZx a:hover {                    color:#FF3D84;                  }                </style><div class="phenomic-BodyContainer" data-reactid="67"><h2 id="preface"><a href="#preface" class="phenomic-HeadingAnchor">#</a>Preface</h2>
+<p>In this post I will go through the steps I had to perform in order to get
+<a href="http://yeoman.io">Yeoman</a> up and running on relatively fresh installation of
+FreeBSD 9 with Xorg and Desktop Environment.</p>
+<h2 id="check-your-system"><a href="#check-your-system" class="phenomic-HeadingAnchor">#</a>Check your system</h2>
+<p>Run <code>curl -L get.yeoman.io | bash</code> in order to see what dependencies you need
+to install. Since my commit
+<a href="https://github.com/yeoman/yeoman/commit/8630c44fc9cd46155f9a620c9b2a2ec5c9ca81bd">8630c44</a>
+was kindly merged into Yeoman's master branch this step is possible on
+FreeBSD.</p>
+<h2 id="install-dependencies"><a href="#install-dependencies" class="phenomic-HeadingAnchor">#</a>Install Dependencies</h2>
+<div class="warning-box">
+<p>The list of dependencies may vary with time. Refer to
+<a href="https://github.com/yeoman/yeoman/wiki/Manual-Install">Yeoman's wiki</a> for more
+up-to-date list.</p>
+</div>
+<p>Please note that there are alternative methods for installing software in
+FreeBSD so you decide what method to use when installing those dependencies,
+however following worked for me.</p>
+<p>Install as <em>root</em> user:</p>
+<p><strong>Git</strong>
+<code>cd /usr/ports/devel/git &#x26;&#x26; make install clean</code></p>
+<p><strong>PhantomJS</strong> (this may take a while)
+<code>cd /usr/ports/lang/phantomjs &#x26;&#x26; make install clean</code></p>
+<p><strong>NodeJS</strong>
+<code>cd /usr/ports/www/node &#x26;&#x26; make install clean</code></p>
+<p><strong>Npm</strong>
+<code>cd /usr/ports/www/npm &#x26;&#x26; make install clean</code></p>
+<p><strong>Google Chrome</strong> (this may take a while)
+<code>cd /usr/ports/www/chromium &#x26;&#x26; make install clean</code></p>
+<p><strong>libyaml</strong>
+<code>cd /usr/ports/textproc/libyaml &#x26;&#x26; make install clean</code></p>
+<p><strong>optipng</strong>
+<code>cd /usr/ports/graphics/optipng &#x26;&#x26; make install clean</code></p>
+<p>Install following as normal user:</p>
+<p><strong>Rvm</strong> + <strong>Ruby</strong>
+Refer to <a href="https://rvm.io/rvm/install/">https://rvm.io/rvm/install/</a> for
+installation instructions</p>
+<p><strong>Compass</strong>
+<code>gem install compass</code></p>
+<h2 id="verify-dependencies"><a href="#verify-dependencies" class="phenomic-HeadingAnchor">#</a>Verify Dependencies</h2>
+<p>Run <code>curl -L get.yeoman.io | bash</code> again to verify that you have completed
+the list of required dependencies.</p>
+<h2 id="say-hello-to-yeoman"><a href="#say-hello-to-yeoman" class="phenomic-HeadingAnchor">#</a>Say hello to Yeoman</h2>
+<p>Finally, when all required dependencies are installed we're ready
+(hopefully) to say hello to Yeoman:<br>
+<code>npm install -g yeoman</code></p>
+<h2 id="known-issues"><a href="#known-issues" class="phenomic-HeadingAnchor">#</a>Known issues</h2>
+<ul>
+<li>When I first initialized a yeoman project and executed <code>yeoman server</code> I
+got this scary error: <strong>v8::Context::New() V8 is no longer usable</strong>
+The solution was to execute <code>yeoman build</code> at least once, since then I
+didn't see this error</li>
+<li>After a few files modifications yeoman couldn't reload the page (opened in
+Opera) any more as there was this error: <strong>TypeError: Cannot call method 'send'
+of null</strong> The solution was to use Chromium instead of Opera (didn't test
+with Firefox however)</li>
+</ul>
+<h2 id="conclusion"><a href="#conclusion" class="phenomic-HeadingAnchor">#</a>Conclusion</h2>
+<p>Hope this post will be helpful to anyone besides myself.</p>
+<p>If you followed this post and found any required steps that are
+not covered, please leave a comment below.</p>
+</div></div></div><div class="_3ccji MSG4a" data-reactid="68"><div class="_20NZx" data-reactid="69"><div class="_2XMjj" data-reactid="70"><div class="_2nvn1" data-reactid="71"><a href="/" data-reactid="72"><div class="_2Rb1P _C13d" data-reactid="73"><h1 data-reactid="74">Sergey Lukin</h1><img src="/_/src/components/Avatar/small.66ab54f23a6dd55c82ff6a51c4ca8c3b.jpg" style="box-shadow:0 0 0 2px rgba(186, 77, 60, .9),
+           0 2px 5px 4px rgba(255, 255, 255, .2);" alt="Sergey Lukin" width="100%" data-reactid="75"/></div></a></div><div class="_33pCB" data-reactid="76"><p data-reactid="77">Hi, I&#x27;m Sergey, 30yo, father of 2, currently based in Tel Aviv, Israel.</p><p data-reactid="78">I&#x27;m mostly passionate about #music, #programming, #sport, #ui, #ux ...in alphabetical order :)</p><p data-reactid="79"><!-- react-text: 80 -->Read more about me in my <!-- /react-text --><a href="/resume.html" data-reactid="81">Résumé</a></p><div data-reactid="82"><ul class="_3iOTN _8vNEi" data-reactid="83"><li data-reactid="84"><a rel="nofollow" target="_blank" class="_3f3Nx" href="https://twitter.com/sergey_lukin" data-reactid="85"><svg width="30" height="30" viewBox="0 0 30 30" data-reactid="86"><path fill="#000000" d="M24.7936118,8.14496314 C25.8255528,7.53071253
+            26.5872236,6.54791155 27.029484,5.36855037
+            C26.0712531,5.93366093 24.9410319,6.35135135
+            23.7371007,6.5970516 C22.8280098,5.58968059
+            21.5503686,5 20.1007371,5 C17.2751843,5
+            14.990172,7.21130221 14.990172,10.036855
+            C14.990172,10.4545455 15.0884521,10.7985258
+            15.1375921,11.2407862 C10.9361179,10.970516
+            7.2014742,8.93120393 4.71990172,5.93366093
+            C4.25307125,6.67076167 4.03194103,7.53071253
+            4.03194103,8.48894349 C4.03194103,10.2088452
+            4.89189189,11.7567568 6.29238329,12.6658477
+            C5.45700246,12.6167076 4.6953317,12.3955774
+            3.98280098,12.002457 L3.98280098,12.0761671
+            C3.98280098,14.5085995 5.72727273,16.5724816
+            8.03685504,17.039312 C7.64373464,17.1375921
+            7.15233415,17.2358722 6.71007371,17.2358722
+            C6.39066339,17.2358722 6.02211302,17.1621622
+            5.72727273,17.1375921 C6.39066339,19.1523342
+            8.28255528,20.6511057 10.4692875,20.6756757
+            C8.7985258,22.027027 6.56265356,22.8132678
+            4.17936118,22.8132678 C3.78624079,22.8132678
+            3.34398034,22.8132678 3,22.7886978
+            C5.23587224,24.2383292 7.91400491,25
+            10.7886978,25 C20.0515971,25 25.1867322,17.3341523
+            25.1867322,10.6265356 C25.1867322,10.4545455
+            25.1867322,10.2088452 25.1621622,9.96314496
+            C26.1695332,9.22604423 27.029484,8.29238329
+            27.6683047,7.33415233 C26.8083538,7.75184275
+            25.8009828,7.997543 24.7936118,8.14496314 Z" data-reactid="87"></path></svg></a></li><li data-reactid="88"><a rel="nofollow" target="_blank" class="_33JIK" href="https://github.com/sergeylukin" data-reactid="89"><svg width="60" height="60" viewBox="0 0 512 512" data-reactid="90"><path d="M256 70.7c-102.6 0-185.9 83.2-185.9
+            185.9 0 82.1 53.3 151.8 127.1 176.4 9.3 1.7
+            12.3-4 12.3-8.9V389.4c-51.7 11.3-62.5-21.9-62.5-21.9
+            -8.4-21.5-20.6-27.2-20.6-27.2 -16.9-11.5 1.3-11.3
+            1.3-11.3 18.7 1.3 28.5 19.2 28.5 19.2 16.6 28.4 43.5
+            20.2 54.1 15.4 1.7-12 6.5-20.2 11.8-24.9
+            -41.3-4.7-84.7-20.6-84.7-91.9 0-20.3 7.3-36.9 19.2-49.9
+            -1.9-4.7-8.3-23.6 1.8-49.2 0 0 15.6-5 51.1 19.1
+            14.8-4.1 30.7-6.2 46.5-6.3 15.8 0.1 31.7 2.1 46.6 6.3
+            35.5-24 51.1-19.1 51.1-19.1 10.1 25.6 3.8 44.5 1.8 49.2
+            11.9 13 19.1 29.6 19.1 49.9 0 71.4-43.5 87.1-84.9 91.7
+            6.7 5.8 12.8 17.1 12.8 34.4 0 24.9 0 44.9 0 51 0 4.9 3
+            10.7 12.4 8.9 73.8-24.6 127-94.3 127-176.4C441.9 153.9
+            358.6 70.7 256 70.7z" data-reactid="91"></path></svg></a></li><li data-reactid="92"><a rel="nofollow" target="_blank" class="_33b8m" href="https://codepen.io/sergeylukin" data-reactid="93"><svg width="60" height="60" viewBox="0 0 500 500" data-reactid="94"><g data-reactid="95"><path d="M249.5,15C120,15,15,120,15,249.5s105,234.5,
+              234.5,234.5c129.5,0,234.5-105,234.5-234.5S379.1,15,
+              249.5,15z M249.5,445.6 c-108.1,
+              0-196-87.9-196-196s87.9-196,196-196c108.1,0,196,
+              87.9,196,196S357.6,445.6,249.5,445.6z" data-reactid="96"></path><path d="M394.5,203.7c0-0.2-0.1-0.4-0.1-0.5
+              c-0.1-0.4-0.1-0.7-0.2-1c-0.1-0.2-0.1-0.4-0.2-0.6
+              c-0.1-0.3-0.2-0.6-0.3-0.9 c-0.1-0.2-0.2-0.4-0.3-0.6
+              c-0.1-0.3-0.3-0.6-0.4-0.8c-0.1-0.2-0.2-0.4-0.4-0.6
+              c-0.2-0.3-0.3-0.5-0.5-0.8c-0.1-0.2-0.3-0.4-0.4-0.5
+              c-0.2-0.2-0.4-0.5-0.6-0.7c-0.2-0.2-0.3-0.3-0.5-0.5
+              c-0.2-0.2-0.5-0.4-0.7-0.6c-0.2-0.1-0.4-0.3-0.6-0.4
+              c-0.1,0-0.1-0.1-0.2-0.2 l-132.6-88.4
+              c-4.2-2.8-9.6-2.8-13.8,0L110.1,195
+              c-0.1,0-0.1,0.1-0.2,0.2c-0.2,0.1-0.4,0.3-0.6,0.4
+              c-0.2,0.2-0.5,0.4-0.7,0.6 c-0.2,0.2-0.3,0.3-0.5,0.5
+              c-0.2,0.2-0.4,0.4-0.6,0.7c-0.1,0.2-0.3,0.4-0.4,0.5
+              c-0.2,0.2-0.4,0.5-0.5,0.8c-0.1,0.2-0.2,0.4-0.4,0.6
+              c-0.2,0.3-0.3,0.5-0.4,0.8c-0.1,0.2-0.2,0.4-0.3,0.6
+              c-0.1,0.3-0.2,0.6-0.3,0.9c-0.1,0.2-0.1,0.4-0.2,0.6
+              c-0.1,0.3-0.2,0.7-0.2,1 c0,0.2-0.1,0.4-0.1,0.5
+              c-0.1,0.5-0.1,1.1-0.1,1.6v88.4c0,0.5,0,1.1,0.1,1.6
+              c0,0.2,0.1,0.4,0.1,0.5c0.1,0.4,0.1,0.7,0.2,1
+              c0.1,0.2,0.1,0.4,0.2,0.6c0.1,0.3,0.2,0.6,0.3,0.9
+              c0.1,0.2,0.2,0.4,0.3,0.6c0.1,0.3,0.3,0.6,0.4,0.8
+              c0.1,0.2,0.2,0.4,0.4,0.6 c0.2,0.3,0.3,0.5,0.5,0.8
+              c0.1,0.2,0.3,0.4,0.4,0.5c0.2,0.2,0.4,0.5,0.6,0.7
+              c0.2,0.2,0.3,0.3,0.5,0.5c0.2,0.2,0.5,0.4,0.7,0.6
+              c0.2,0.1,0.4,0.3,0.6,0.4
+              c0.1,0,0.1,0.1,0.2,0.2l132.6,88.4
+              c2.1,1.4,4.5,2.1,6.9,2.1
+              c2.4,0,4.8-0.7,6.9-2.1L389,304.1
+              c0.1,0,0.1-0.1,0.2-0.2c0.2-0.1,0.4-0.3,0.6-0.4
+              c0.2-0.2,0.5-0.4,0.7-0.6c0.2-0.2,0.3-0.3,0.5-0.5
+              c0.2-0.2,0.4-0.4,0.6-0.7
+              c0.1-0.2,0.3-0.4,0.4-0.5c0.2-0.2,0.4-0.5,0.5-0.8
+              c0.1-0.2,0.2-0.4,0.4-0.6c0.2-0.3,0.3-0.5,0.4-0.8
+              c0.1-0.2,0.2-0.4,0.3-0.6
+              c0.1-0.3,0.2-0.6,0.3-0.9c0.1-0.2,0.1-0.4,0.2-0.6
+              c0.1-0.3,0.2-0.7,0.2-1c0-0.2,0.1-0.4,0.1-0.5
+              c0.1-0.5,0.1-1.1,0.1-1.6v-88.4
+              C394.6,204.8,394.5,204.3,394.5,203.7z
+              M262,140.3l97.7,65.1L316,234.6l-54-36.1V140.3z
+              M237.1,140.3v58.1l-54,36.1l-43.6-29.2
+              L237.1,140.3z M129.5,228.7l31.2,20.9l-31.2,20.9V228.7z
+              M237.1,358.8l-97.7-65.1l43.6-29.2l54,36.1V358.8z
+              M249.5,279l-44.1-29.5
+              l44.1-29.5l44.1,29.5L249.5,279z
+              M262,358.8v-58.1l54-36.1l43.6,29.2L262,358.8z
+              M369.6,270.4l-31.2-20.9l31.2-20.9V270.4z" data-reactid="97"></path></g></svg></a></li><li data-reactid="98"><a rel="nofollow" class="_2yUQt" href="mailto:contact@sergeylukin.com?subject=Hi, Sergey!" data-reactid="99"><svg width="30" height="30" viewBox="0 0 483.3 483.3" data-reactid="100"><g data-reactid="101"><g data-reactid="102"><path d="M424.3,57.75H59.1
+                c-32.6,0-59.1,26.5-59.1,59.1v249.6
+                c0,32.6,26.5,59.1,59.1,59.1h365.1
+                c32.6,0,59.1-26.5,59.1-59.1
+                v-249.5C483.4,84.35,456.9,57.75,424.3,57.75z
+                M456.4,366.45c0,17.7-14.4,32.1-32.1,32.1H59.1
+                c-17.7,0-32.1-14.4-32.1-32.1v-249.5
+                c0-17.7,14.4-32.1,32.1-32.1h365.1
+                c17.7,0,32.1,14.4,32.1,32.1v249.5H456.4z" data-reactid="103"></path><path d="M304.8,238.55l118.2-106c5.5-5,6-13.5,1-19.1
+                c-5-5.5-13.5-6-19.1-1l-163,146.3l-31.8-28.4
+                c-0.1-0.1-0.2-0.2-0.2-0.3
+                c-0.7-0.7-1.4-1.3-2.2-1.9L78.3,112.35
+                c-5.6-5-14.1-4.5-19.1,1.1
+                c-5,5.6-4.5,14.1,1.1,19.1l119.6,106.9L60.8,350.95
+                c-5.4,5.1-5.7,13.6-0.6,19.1c2.7,2.8,6.3,4.3,9.9,4.3
+                c3.3,0,6.6-1.2,9.2-3.6l120.9-113.1l32.8,29.3
+                c2.6,2.3,5.8,3.4,9,3.4
+                c3.2,0,6.5-1.2,9-3.5l33.7-30.2l120.2,114.2
+                c2.6,2.5,6,3.7,9.3,3.7c3.6,0,7.1-1.4,9.8-4.2
+                c5.1-5.4,4.9-14-0.5-19.1L304.8,238.55z" data-reactid="104"></path></g></g></svg></a></li></ul></div></div></div></div></div></header></div><footer class="_2l1-L" data-reactid="105"><p data-reactid="106"><!-- react-text: 107 -->Made with <!-- /react-text --><span class="Ix4X_" data-reactid="108">♥</span><!-- react-text: 109 --> in Tel Aviv<!-- /react-text --></p></footer></div></div></div><script>window.__COLLECTION__ = [{"layout":"PageError","route":"404.html","description":"Content here not used, see src/layouts/PageError","__filename":"404.md","__url":"/404.html","__resourceUrl":"/404.html","__dataUrl":"/404.html.c51e41dcf93740dd221b7da7702623a9.json"},{"title":"Blog","layout":"Blog","route":"archive","description":"","__filename":"blog.md","__url":"/archive/","__resourceUrl":"/archive/index.html","__dataUrl":"/archive/index.html.8b02eab71d7ea593ba1d429c7dc21b9a.json"},{"title":"Sergey Lukin","layout":"Homepage","description":"Hi","__filename":"index.md","__url":"/","__resourceUrl":"/index.html","__dataUrl":"/index.html.5eace9ad658077b211f41ae846a74ff3.json"},{"layout":"PageLoading","description":"Content here not used, see src/layouts/PageLoading. This page is a demo for loading state. You can safely delete if you want.","__filename":"loading.md","__url":"/loading/","__resourceUrl":"/loading/index.html","__dataUrl":"/loading/index.html.195d4f0e5d27a11e56d8db059f891663.json"},{"layout":"Post","date":"2012-08-03T00:00:00.000Z","tags":["git","deployment","workflow"],"description":"How to integrate GIT in a team that is not ready to fully use VCS yet","title":"Lazy GIT integration","lastmod":"2013-06-20T00:00:00.000Z","route":"2012/lazy-git-integration","image":"/assets/lazy-git-integration.jpeg","imageUrl":"https://unsplash.com/photos/TYIzeCiZ_60","imageAuthor":"Karl Fredrickson","imageAuthorUrl":"https://unsplash.com/@kfred","imageProviderName":"Unsplash","imageProviderUrl":"https://unsplash.com/","primaryColor":"rgba(109, 63, 34, .9)","secondaryColor":"#e1c788","linksColor":"#680148","linksHoverColor":"#000000","__filename":"posts/2012-08-03-lazy-git-integration.md","__url":"/2012/lazy-git-integration/","__resourceUrl":"/2012/lazy-git-integration/index.html","__dataUrl":"/2012/lazy-git-integration/index.html.99367019550874faced9d787ea3da2f4.json"},{"layout":"Post","date":"2012-08-29T00:00:00.000Z","title":"Things I learned from personal website: setup","description":"Tips on setting up a static website with Jekyll and Github","route":"2012/things-i-learned-from-personal-website-setup","image":"/assets/things-i-learned-from-personal-website-setup.jpg","imageUrl":"https://unsplash.com/photos/6PF6DaiWz48","imageAuthor":"Rayi Christian Wicaksono","imageAuthorUrl":"https://unsplash.com/@mumolabs","imageProviderName":"Unsplash","imageProviderUrl":"https://unsplash.com/","primaryColor":"rgba(59, 59, 59, .8)","secondaryColor":"white","linksColor":"#FD6E8A","linksHoverColor":"#7C5D4A","tags":["jekyll","static website","github pages"],"__filename":"posts/2012-08-29-things-i-learned-from-personal-website-setup.md","__url":"/2012/things-i-learned-from-personal-website-setup/","__resourceUrl":"/2012/things-i-learned-from-personal-website-setup/index.html","__dataUrl":"/2012/things-i-learned-from-personal-website-setup/index.html.292234a39a352cef0221d45808c15e08.json"},{"layout":"Post","tags":["Ruby on Rails"],"description":"A short way of rendering a partial for list of Model objects in the View","title":"Ruby on Rails magic: first impression","date":"2012-09-18T00:00:00.000Z","route":"2012/ruby-on-rails-magic-first-impression","image":"/assets/ruby-on-rails-magic-first-impression.jpeg","imageUrl":"https://unsplash.com/photos/VLdaxYyXJvw","imageAuthor":"Sebastian Muller","imageAuthorUrl":"https://unsplash.com/@sebastianmuller","imageProviderName":"Unsplash","imageProviderUrl":"https://unsplash.com/","primaryColor":"rgba(183, 97, 113, .8)","secondaryColor":"#f8e7cf","linksColor":"#848D82","linksHoverColor":"#FD6E8A","__filename":"posts/2012-09-18-ruby-on-rails-magic-first-impression.md","__url":"/2012/ruby-on-rails-magic-first-impression/","__resourceUrl":"/2012/ruby-on-rails-magic-first-impression/index.html","__dataUrl":"/2012/ruby-on-rails-magic-first-impression/index.html.5fc410989f67feb66f6617cb3647f740.json"},{"layout":"Post","date":"2012-11-19T00:00:00.000Z","tags":["yeoman","freebsd"],"title":"Yeoman on FreeBSD 9","description":"Step-by-step guide on how I installed Yeoman on FreeBSD 9","lastmod":"2012-11-23T00:00:00.000Z","route":"2012/yeoman-on-freebsd-9","image":"/assets/yeoman-on-freebsd-9.jpeg","imageUrl":"https://unsplash.com/photos/UdgvzNom0Xs","imageAuthor":"John Price","imageAuthorUrl":"https://unsplash.com/@johnprice","imageProviderName":"Unsplash","imageProviderUrl":"https://unsplash.com/","primaryColor":"rgba(186, 77, 60, .9)","secondaryColor":"#dddce2","linksColor":"#2FCE03","linksHoverColor":"#FF3D84","__filename":"posts/2012-11-19-yeoman-on-freebsd-9.md","__url":"/2012/yeoman-on-freebsd-9/","__resourceUrl":"/2012/yeoman-on-freebsd-9/index.html","__dataUrl":"/2012/yeoman-on-freebsd-9/index.html.ffa0ffefc431f49ff950a80ac0f68ecd.json"},{"layout":"Post","tags":["Ruby on Rails"],"title":"Ruby on Rails magic: models relation","date":"2013-02-18T00:00:00.000Z","route":"2013/ruby-on-rails-magic-models-relation","image":"/assets/ruby-on-rails-magic-models-relation.jpeg","imageUrl":"https://unsplash.com/photos/PAykYb-8Er8","imageAuthor":"Ian Schneider","imageAuthorUrl":"https://unsplash.com/@goian","imageProviderName":"Unsplash","imageProviderUrl":"https://unsplash.com/","primaryColor":"rgba(255, 214, 156, 0.8)","secondaryColor":"#47281e","linksColor":"#4878A8","linksHoverColor":"#A8D8F0","description":"5 months ago I demonstrated a convention of RoR that makes it possible to render Model objects in their corresponding partials in just one…","__filename":"posts/2013-02-18-ruby-on-rails-magic-models-relation.md","__url":"/2013/ruby-on-rails-magic-models-relation/","__resourceUrl":"/2013/ruby-on-rails-magic-models-relation/index.html","__dataUrl":"/2013/ruby-on-rails-magic-models-relation/index.html.9966b80296c18b521f2c2c02e05eb938.json"},{"layout":"Post","date":"2013-02-27T00:00:00.000Z","tags":["design patterns","agile patterns"],"description":"Announcement of our new Design Patterns documentation resource","title":"Meet the new Design Patterns resource","route":"2013/meet-the-new-design-patterns-resource","image":"/assets/meet-the-new-design-patterns-resource.jpeg","imageUrl":"https://unsplash.com/photos/E9aetBe2w40","imageAuthor":"Sam Schooler","imageAuthorUrl":"https://unsplash.com/@sam","imageProviderName":"Unsplash","imageProviderUrl":"https://unsplash.com/","primaryColor":"rgba(59, 94, 151, .8)","secondaryColor":"#fdfaf4","linksColor":"#2C1E1E","linksHoverColor":"#C6D5B0","__filename":"posts/2013-02-27-meet-the-new-design-patterns-resource.md","__url":"/2013/meet-the-new-design-patterns-resource/","__resourceUrl":"/2013/meet-the-new-design-patterns-resource/index.html","__dataUrl":"/2013/meet-the-new-design-patterns-resource/index.html.d3149ed1723215bd58270a03691d7013.json"},{"layout":"Post","date":"2013-11-18T00:00:00.000Z","route":"2013/compiling-vim-with-python-support","tags":["vim"],"title":"Compiling VIM with Python support","image":"/assets/compiling-vim-with-python-support.jpeg","imageUrl":"https://unsplash.com/photos/bk4HoBc4k60","imageAuthor":"Martin Ezequiel Sanchez","imageAuthorUrl":"https://unsplash.com/@mzeketv","imageProviderName":"Unsplash","imageProviderUrl":"https://unsplash.com/","primaryColor":"rgba(157, 118, 65, .8)","secondaryColor":"#e7eff6","linksColor":"#C92020","linksHoverColor":"#88C6C9","description":"When compiling VIM with specific version of Python support while there is different default version of Python on your system it's important…","__filename":"posts/2013-11-18-compiling-vim-with-python-support.md","__url":"/2013/compiling-vim-with-python-support/","__resourceUrl":"/2013/compiling-vim-with-python-support/index.html","__dataUrl":"/2013/compiling-vim-with-python-support/index.html.a1dde739950775bda0dfe9a8cdc1e5cd.json"},{"layout":"Post","date":"2013-12-26T00:00:00.000Z","tags":["css"],"title":"Styling HTML elements based on locale","route":"2013/styling-html-elements-based-on-locale","image":"/assets/styling-html-elements-based-on-locale.jpeg","imageUrl":"https://unsplash.com/photos/g-AklIvI1aI","imageAuthor":"Steven Wei","imageAuthorUrl":"https://unsplash.com/@stevenwei","imageProviderName":"Unsplash","imageProviderUrl":"https://unsplash.com/","primaryColor":"rgba(199, 253, 252, .9)","secondaryColor":"#485f5c","linksColor":"#3299BB","linksHoverColor":"#FF9900","description":"Here is a brain teaser. Apply styles just to paragraphs in Catalan language assuming following markup and of course solution shouldn't be…","__filename":"posts/2013-12-26-styling-html-elements-based-on-locale.md","__url":"/2013/styling-html-elements-based-on-locale/","__resourceUrl":"/2013/styling-html-elements-based-on-locale/index.html","__dataUrl":"/2013/styling-html-elements-based-on-locale/index.html.9e35652b071795f28c8fa1727857f68d.json"},{"title":"Styling the first N HTML elements","date":"2013-12-29T00:00:00.000Z","layout":"Post","route":"2013/styling-first-n-html-elements","image":"/assets/styling-first-n-html-elements.jpeg","imageUrl":"https://unsplash.com/photos/MMJx78V7xS8","imageAuthor":"Steven Kamenar","imageAuthorUrl":"https://unsplash.com/@skamenar","imageProviderName":"Unsplash","imageProviderUrl":"https://unsplash.com/","primaryColor":"rgba(207, 224, 233, .9)","secondaryColor":"#304232","linksColor":"#908f58","linksHoverColor":"#506240","description":"Here's a little trick I learned today. Think of a table with rows. Do you think that it's possible to only apply styles to first, let's say…","__filename":"posts/2013-12-29-styling-first-n-html-elements.md","__url":"/2013/styling-first-n-html-elements/","__resourceUrl":"/2013/styling-first-n-html-elements/index.html","__dataUrl":"/2013/styling-first-n-html-elements/index.html.2c9c33bb6fd2fcddb0f7f9b536743c06.json"},{"title":"Escaping DNS trap in OS X","date":"2016-10-25T00:00:00.000Z","layout":"Post","image":"/assets/escaping-dns-trap-in-osx.jpg","imageUrl":"https://unsplash.com/photos/E4944K_4SvI","imageAuthor":"Buzz Andersen","imageAuthorUrl":"https://unsplash.com/@ldandersen","imageProviderName":"Unsplash","imageProviderUrl":"https://unsplash.com/","route":"2016/escaping-dns-trap-in-osx","primaryColor":"rgba(195, 99, 90, .85)","secondaryColor":"#feedd0","linksColor":"#3292ff","linksHoverColor":"#0033c5","description":"Last week a DDoS attack shut down several popular internet sites, including Twitter, Github, PayPal, Reddit, etc. The blackout was a result…","__filename":"posts/2016-10-25-escaping-dns-trap-in-osx.md","__url":"/2016/escaping-dns-trap-in-osx/","__resourceUrl":"/2016/escaping-dns-trap-in-osx/index.html","__dataUrl":"/2016/escaping-dns-trap-in-osx/index.html.040dd51ec059345805468f3448257d9b.json"},{"title":"Projects","layout":"Projects","route":"lab","description":"","__filename":"projects.md","__url":"/lab/","__resourceUrl":"/lab/index.html","__dataUrl":"/lab/index.html.b2322483537433c8c660d92370af69a6.json"},{"layout":"Resume","route":"resume.html","title":"Resume","description":"","__filename":"resume.md","__url":"/resume.html","__resourceUrl":"/resume.html","__dataUrl":"/resume.html.ef82928614f9d3ece1b8411f51f97e51.json"}];window.__INITIAL_STATE__ = {"pages":{"/2012/yeoman-on-freebsd-9/":{"head":{"layout":"Post","date":"2012-11-19T00:00:00.000Z","tags":["yeoman","freebsd"],"title":"Yeoman on FreeBSD 9","description":"Step-by-step guide on how I installed Yeoman on FreeBSD 9","lastmod":"2012-11-23T00:00:00.000Z","route":"2012/yeoman-on-freebsd-9","image":"/assets/yeoman-on-freebsd-9.jpeg","imageUrl":"https://unsplash.com/photos/UdgvzNom0Xs","imageAuthor":"John Price","imageAuthorUrl":"https://unsplash.com/@johnprice","imageProviderName":"Unsplash","imageProviderUrl":"https://unsplash.com/","primaryColor":"rgba(186, 77, 60, .9)","secondaryColor":"#dddce2","linksColor":"#2FCE03","linksHoverColor":"#FF3D84"},"body":"<h2 id=\"preface\"><a href=\"#preface\" class=\"phenomic-HeadingAnchor\">#</a>Preface</h2>\n<p>In this post I will go through the steps I had to perform in order to get\n<a href=\"http://yeoman.io\">Yeoman</a> up and running on relatively fresh installation of\nFreeBSD 9 with Xorg and Desktop Environment.</p>\n<h2 id=\"check-your-system\"><a href=\"#check-your-system\" class=\"phenomic-HeadingAnchor\">#</a>Check your system</h2>\n<p>Run <code>curl -L get.yeoman.io | bash</code> in order to see what dependencies you need\nto install. Since my commit\n<a href=\"https://github.com/yeoman/yeoman/commit/8630c44fc9cd46155f9a620c9b2a2ec5c9ca81bd\">8630c44</a>\nwas kindly merged into Yeoman's master branch this step is possible on\nFreeBSD.</p>\n<h2 id=\"install-dependencies\"><a href=\"#install-dependencies\" class=\"phenomic-HeadingAnchor\">#</a>Install Dependencies</h2>\n<div class=\"warning-box\">\n<p>The list of dependencies may vary with time. Refer to\n<a href=\"https://github.com/yeoman/yeoman/wiki/Manual-Install\">Yeoman's wiki</a> for more\nup-to-date list.</p>\n</div>\n<p>Please note that there are alternative methods for installing software in\nFreeBSD so you decide what method to use when installing those dependencies,\nhowever following worked for me.</p>\n<p>Install as <em>root</em> user:</p>\n<p><strong>Git</strong>\n<code>cd /usr/ports/devel/git &#x26;&#x26; make install clean</code></p>\n<p><strong>PhantomJS</strong> (this may take a while)\n<code>cd /usr/ports/lang/phantomjs &#x26;&#x26; make install clean</code></p>\n<p><strong>NodeJS</strong>\n<code>cd /usr/ports/www/node &#x26;&#x26; make install clean</code></p>\n<p><strong>Npm</strong>\n<code>cd /usr/ports/www/npm &#x26;&#x26; make install clean</code></p>\n<p><strong>Google Chrome</strong> (this may take a while)\n<code>cd /usr/ports/www/chromium &#x26;&#x26; make install clean</code></p>\n<p><strong>libyaml</strong>\n<code>cd /usr/ports/textproc/libyaml &#x26;&#x26; make install clean</code></p>\n<p><strong>optipng</strong>\n<code>cd /usr/ports/graphics/optipng &#x26;&#x26; make install clean</code></p>\n<p>Install following as normal user:</p>\n<p><strong>Rvm</strong> + <strong>Ruby</strong>\nRefer to <a href=\"https://rvm.io/rvm/install/\">https://rvm.io/rvm/install/</a> for\ninstallation instructions</p>\n<p><strong>Compass</strong>\n<code>gem install compass</code></p>\n<h2 id=\"verify-dependencies\"><a href=\"#verify-dependencies\" class=\"phenomic-HeadingAnchor\">#</a>Verify Dependencies</h2>\n<p>Run <code>curl -L get.yeoman.io | bash</code> again to verify that you have completed\nthe list of required dependencies.</p>\n<h2 id=\"say-hello-to-yeoman\"><a href=\"#say-hello-to-yeoman\" class=\"phenomic-HeadingAnchor\">#</a>Say hello to Yeoman</h2>\n<p>Finally, when all required dependencies are installed we're ready\n(hopefully) to say hello to Yeoman:<br>\n<code>npm install -g yeoman</code></p>\n<h2 id=\"known-issues\"><a href=\"#known-issues\" class=\"phenomic-HeadingAnchor\">#</a>Known issues</h2>\n<ul>\n<li>When I first initialized a yeoman project and executed <code>yeoman server</code> I\ngot this scary error: <strong>v8::Context::New() V8 is no longer usable</strong>\nThe solution was to execute <code>yeoman build</code> at least once, since then I\ndidn't see this error</li>\n<li>After a few files modifications yeoman couldn't reload the page (opened in\nOpera) any more as there was this error: <strong>TypeError: Cannot call method 'send'\nof null</strong> The solution was to use Chromium instead of Opera (didn't test\nwith Firefox however)</li>\n</ul>\n<h2 id=\"conclusion\"><a href=\"#conclusion\" class=\"phenomic-HeadingAnchor\">#</a>Conclusion</h2>\n<p>Hope this post will be helpful to anyone besides myself.</p>\n<p>If you followed this post and found any required steps that are\nnot covered, please leave a comment below.</p>\n","__filename":"posts/2012-11-19-yeoman-on-freebsd-9.md","__url":"/2012/yeoman-on-freebsd-9/","__resourceUrl":"/2012/yeoman-on-freebsd-9/index.html","__dataUrl":"/2012/yeoman-on-freebsd-9/index.html.ffa0ffefc431f49ff950a80ac0f68ecd.json","type":"Post"}}}</script><script data-react-helmet="true" src="https://cdn.polyfill.io/v2/polyfill.min.js"></script><script src="/phenomic.browser.5a379d9a7abc40fa4397.js"></script></body></html>

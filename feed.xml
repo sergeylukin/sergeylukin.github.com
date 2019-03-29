@@ -1,0 +1,708 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[sergeylukin]]></title><description><![CDATA[sergeylukin]]></description><link>https://sergeylukin.com/</link><generator>RSS for Node</generator><lastBuildDate>Fri, 29 Mar 2019 21:35:18 GMT</lastBuildDate><atom:link href="https://sergeylukin.com/feed.xml" rel="self" type="application/rss+xml"/><item><title><![CDATA[Escaping DNS trap in OS X]]></title><description><![CDATA[<p>Last week a DDoS attack shut down several popular internet sites, including
+Twitter, Github, PayPal, Reddit, etc. The blackout was a result of a global
+DDoS attack on Dyn, the domain name service used by these sites.</p>
+<p>In this post I'm going to talk about a way one could use to be able to access
+these websites by their fully qualified domain names regardless of the fact that
+their authoritative servers were not able to respond. Please note that although
+the method applies to all major Operating Systems, I'm only discussing OS X here.</p>
+<h2 id="etcresolvconf"><a href="#etcresolvconf" class="phenomic-HeadingAnchor">#</a>/etc/resolv.conf</h2>
+<p>Before I dig into the details let me offer a little challenge for you that is
+somewhat related to this topic.
+Are you a sysadmin or a DevOps? If so then you
+shouldn't have trouble answering following interview question, otherwise just
+read on:</p>
+<blockquote>
+<p>A web application is lagging. One edit the <code>/etc/resolv.conf</code> and add this line
+<code>nameserver 8.8.8.8</code>. It appear to fix the problem. Why?</p>
+</blockquote>
+<p>I've seen this question on
+<a href="https://www.quora.com/What-should-a-fullstack-developer-know-in-2016-1/answer/Christian-Baune">Christian Baune's list of fullstack developer
+questions</a>
+list.</p>
+<p>I must admit, it puzzled me at first. The mysterious <code>8.8.8.8</code> just scared me
+off until I performed a reverse DNS lookup using <code>host 8.8.8.8</code> which returned:</p>
+<pre><code class="hljs language-bash">8.8.8.8.in-addr.arpa domain name pointer google-public-dns-a.google.com.</code></pre>
+<p>It turns out <a href="https://en.wikipedia.org/wiki/Google_Public_DNS">Google has a public DNS server that resolves domain names to IP
+addresses</a>, how cool is that?
+So basically a web application is lagging due to
+some problems with DNS, which by itself can be pretty much anything, and we
+can overcome those problems by resolving hosts via Google's public DNS server.
+While <a href="https://serverfault.com/questions/811123/what-would-happen-if-someone-would-flush-host-from-google-public-dns-while-its">using Google's public DNS server doesn't mean we eliminiate domain
+name resolving
+problems</a>
+, there is a big chance you will be able to resolve
+any existing domain name through it and that's exactly what happened in the
+hypothetical (or not?) scenario above.</p>
+<h2 id="configure-dns-on-os-x"><a href="#configure-dns-on-os-x" class="phenomic-HeadingAnchor">#</a>Configure DNS on OS X</h2>
+<p>Now it's time for me to explain how one could use Google's public DNS server
+in OS X and revert back to the original settings if so required.</p>
+<p>There is a pre-installed tool called <code>networksetup</code>, here is a cut
+from <code>man networksetup</code>:</p>
+<blockquote>
+<p>networksetup -- configuration tool for network settings in System Preferences.
+The networksetup command is used to configure network settings typically
+configured in the System Preferences application. The
+networksetup command requires at least "admin" privileges to run. Most of
+the set commands require "root" privileges to run.</p>
+</blockquote>
+<p>First, we'll use <code>networksetup</code> to list all the network services we have:</p>
+<pre><code class="hljs language-bash">networksetup listallnetworkservices</code></pre>
+<p>The command above should produce an output similar to following:</p>
+<pre><code class="hljs language-bash">Wi-Fi
+Bluetooth PAN
+Thunderbolt Bridge</code></pre>
+<p>Assuming we're using Wi-Fi service, we'd fetch it's current configuration
+by running following command:</p>
+<pre><code class="hljs language-bash">networksetup -getdnsservers Wi-Fi</code></pre>
+<p>There are two possible outputs here: either nothing is configured and the
+output will look like so (scenario 1):</p>
+<pre><code class="hljs language-bash">There aren<span class="hljs-string">'t any DNS Servers set on Wi-Fi.</span></code></pre>
+<p>...either we have something configured and the output may be similar to
+following (scenario 2):</p>
+<pre><code class="hljs language-bash">10.0.1.1</code></pre>
+<p>Just remember the output and we will get back to it when rolling back.</p>
+<p>Let's overwrite the settings (you may need to enter admin password in the
+dialog that will show up):</p>
+<pre><code class="hljs language-bash">networksetup -setdnsservers Wi-Fi 8.8.8.8</code></pre>
+<p>Now any domain name you try to visit via your browser should be resolved
+using Google's public DNS server. That was pretty easy, wasn't it?</p>
+<p>Later on when you need to roll back, just run the following command in
+case you didn't have anything configured for the network service:</p>
+<pre><code class="hljs language-bash">networksetup -setdnsservers Wi-Fi Empty</code></pre>
+<p>Or if you had something configured, say <code>10.0.1.1</code> then run:</p>
+<pre><code class="hljs language-bash">networksetup -setdnsservers Wi-Fi 10.0.1.1</code></pre>
+<p>That's it! Thanks for reading. Happy domain names resolving :)</p>
+]]></description><link>https://sergeylukin.com/2016/escaping-dns-trap-in-osx/</link><guid isPermaLink="true">https://sergeylukin.com/2016/escaping-dns-trap-in-osx/</guid><pubDate>Tue, 25 Oct 2016 00:00:00 GMT</pubDate></item><item><title><![CDATA[Styling the first N HTML elements]]></title><description><![CDATA[<p>Here's a little trick I learned today. Think of a table with rows.
+Do you think that it's possible to only apply styles to first, let's
+say 3, rows using CSS3 selector? Well, it turns out it is possible with
+well known
+<a href="http://www.w3.org/TR/css3-selectors/#nth-child-pseudo">:nth-child()</a> pseudo
+class selector. Let's look at it's basic usage first.</p>
+<h2 id="basics"><a href="#basics" class="phenomic-HeadingAnchor">#</a>Basics</h2>
+<p>Besides accepting <code>odd</code> or <code>even</code> as an argument value <code>:nth-child()</code>
+accepts algebraic expression in format: <em>a</em>n+<em>b</em> and executes it in iteration
+by incrementing <code>n</code> starting with <code>n = 0</code> until it reaches the end of the
+elements tree or until the resulting value is zero or negative.</p>
+<p>So, assuming following markup:</p>
+<pre><code class="hljs language-html"><span class="hljs-tag">&#x3C;<span class="hljs-name">ul</span>></span>
+  <span class="hljs-tag">&#x3C;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"item"</span>></span>f<span class="hljs-tag">&#x3C;/<span class="hljs-name">li</span>></span>
+  <span class="hljs-tag">&#x3C;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"item"</span>></span>o<span class="hljs-tag">&#x3C;/<span class="hljs-name">li</span>></span>
+  <span class="hljs-tag">&#x3C;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"item"</span>></span>o<span class="hljs-tag">&#x3C;/<span class="hljs-name">li</span>></span>
+  <span class="hljs-tag">&#x3C;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"item"</span>></span>b<span class="hljs-tag">&#x3C;/<span class="hljs-name">li</span>></span>
+  <span class="hljs-tag">&#x3C;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"item"</span>></span>a<span class="hljs-tag">&#x3C;/<span class="hljs-name">li</span>></span>
+  <span class="hljs-tag">&#x3C;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"item"</span>></span>r<span class="hljs-tag">&#x3C;/<span class="hljs-name">li</span>></span>
+<span class="hljs-tag">&#x3C;/<span class="hljs-name">ul</span>></span></code></pre>
+<p><code>.item:nth-child(2n+1)</code> will do something like:</p>
+<ol>
+<li><code>2 * 0 + 1</code> equals 1 and so first element will be selected</li>
+<li><code>2 * 1 + 1</code> equals 3 and so third element will be selected</li>
+<li><code>2 * 2 + 1</code> equals 5 and so fifth element will be selected</li>
+<li><code>2 * 3 + 1</code> equals 7 and so selector will stop iterating as seventh element
+doesn't exist (note that elements index start with <code>1</code> and not with <code>0</code>)</li>
+</ol>
+<h2 id="now-the-real-stuff"><a href="#now-the-real-stuff" class="phenomic-HeadingAnchor">#</a>Now the real stuff</h2>
+<p>In the end of <a href="http://www.w3.org/TR/css3-selectors/#nth-child-pseudo">spec</a>,
+there is this note:</p>
+<blockquote>
+<p>The value <em>a</em> can be negative, but only the positive values of <em>a</em>n+<em>b</em>, for n≥0,
+may represent an element in the document tree.</p>
+</blockquote>
+<p>What this means is that if we pass <code>-1n+3</code> or shorter <code>-n+3</code> following
+iteration will happen:</p>
+<ol>
+<li><code>-1 * 0 + 3</code> equals 3 and so third element will be selected</li>
+<li><code>-1 * 1 + 3</code> equals 2 and so second element will be selected</li>
+<li><code>-1 * 2 + 3</code> equals 1 and so first element will be selected</li>
+<li><code>-1 * 3 + 3</code> equals 0 and so selector will stop as there is no element with
+index <code>0</code></li>
+</ol>
+<p>..which results in selecting first 3 elements! Done.</p>
+<p>By the way there is a <a href="http://nth-test.com/">online nth-child simulator</a> which I
+personally use when playing with <code>nth-*</code> selectors. Just FYI.</p>
+]]></description><link>https://sergeylukin.com/2013/styling-first-n-html-elements/</link><guid isPermaLink="true">https://sergeylukin.com/2013/styling-first-n-html-elements/</guid><pubDate>Sun, 29 Dec 2013 00:00:00 GMT</pubDate></item><item><title><![CDATA[Styling HTML elements based on locale]]></title><description><![CDATA[<p>Here is a brain teaser. Apply styles just to paragraphs in
+<a href="http://en.wikipedia.org/wiki/Catalan_language">Catalan</a> language
+assuming following markup and of course solution shouldn't be
+tightened to paragraphs exact position, order or depth:</p>
+<pre><code class="hljs language-html"><span class="hljs-meta">&#x3C;!doctype html></span>
+<span class="hljs-tag">&#x3C;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"ca"</span>></span>
+<span class="hljs-tag">&#x3C;<span class="hljs-name">head</span>></span>
+  <span class="hljs-tag">&#x3C;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"utf-8"</span>></span>
+  <span class="hljs-tag">&#x3C;<span class="hljs-name">title</span>></span>Salut! Txin txin!<span class="hljs-tag">&#x3C;/<span class="hljs-name">title</span>></span>
+<span class="hljs-tag">&#x3C;/<span class="hljs-name">head</span>></span>
+<span class="hljs-tag">&#x3C;<span class="hljs-name">body</span>></span>
+  <span class="hljs-tag">&#x3C;<span class="hljs-name">p</span>></span>No n'hi ha prou amb una llengua<span class="hljs-tag">&#x3C;/<span class="hljs-name">p</span>></span>
+  <span class="hljs-tag">&#x3C;<span class="hljs-name">article</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>></span>
+    <span class="hljs-tag">&#x3C;<span class="hljs-name">h1</span>></span>Phrase of the day<span class="hljs-tag">&#x3C;/<span class="hljs-name">h1</span>></span>
+    <span class="hljs-tag">&#x3C;<span class="hljs-name">p</span>></span>When the going gets tough, the tough get going<span class="hljs-tag">&#x3C;/<span class="hljs-name">p</span>></span>
+  <span class="hljs-tag">&#x3C;/<span class="hljs-name">article</span>></span>
+<span class="hljs-tag">&#x3C;/<span class="hljs-name">body</span>></span>
+<span class="hljs-tag">&#x3C;/<span class="hljs-name">html</span>></span></code></pre>
+<p>Before diving into the solving part let's refresh our minds on what is a
+<a href="http://www.w3.org/TR/html401/struct/dirlang.html#h-8.1">lang</a> attribute:</p>
+<blockquote>
+<p><code>lang</code> attribute specifies the base language of an element's attribute values and
+text content. The default value of this attribute is unknown.</p>
+</blockquote>
+<p>Refer to
+<a href="http://www.loc.gov/standards/iso639-2/php/code_list.php">ISO 639 Language Codes list</a> for valid values.</p>
+<div class="session-post">
+<p><strong>Tip</strong>: It's considered a good practice to set <code>lang</code> attribute in <code>&#x3C;html></code> tag, at least at least
+(think of search engines, speech synthesizers etc.)</p>
+</div>
+<h2 id="first-guess"><a href="#first-guess" class="phenomic-HeadingAnchor">#</a>First Guess</h2>
+<p>One possibly working option would be utilizing
+<a href="http://www.w3.org/TR/css3-selectors/#attribute-representation">attribute selector</a>
+introduced in CSS2 which is
+<a href="http://caniuse.com/#feat=css-sel2">widely supported today</a>:</p>
+<pre><code class="hljs language-css"><span class="hljs-selector-attr">[lang="ca"]</span> <span class="hljs-selector-tag">p</span> {
+  <span class="hljs-attribute">background-color</span>: yellow;
+  <span class="hljs-attribute">color</span>: red;
+}</code></pre>
+<p>..right? Well, not. This would apply the styles to all paragraphs including the one in English
+which is not what we want.</p>
+<h2 id="solution"><a href="#solution" class="phenomic-HeadingAnchor">#</a>Solution</h2>
+<p>What we really need here is a less known
+<a href="http://www.w3.org/wiki/CSS/Selectors/pseudo-classes/:lang">:lang pseudo class</a>
+selector which has even wider support among vendors than attribute selectors:</p>
+<pre><code class="hljs language-css"><span class="hljs-selector-tag">p</span><span class="hljs-selector-pseudo">:lang(ca)</span> {
+  <span class="hljs-attribute">background-color</span>: yellow;
+  <span class="hljs-attribute">color</span>: red;
+}</code></pre>
+<p>What it actually does is it selects
+elements that have inherited the specified language from their parents.
+Because paragraph in English has two parents with <code>lang</code> attribute
+(<code>&#x3C;article lang="en"></code>, <code>&#x3C;html lang="ca"></code>) and the closer one has
+value of <code>en</code> it is out of our selector's scope.</p>
+<h2 id="conclusion"><a href="#conclusion" class="phenomic-HeadingAnchor">#</a>Conclusion</h2>
+<p>While there most likely isn't much of need in styling elements based on their
+locale it's definitely worth knowing the difference between using attribute
+selector and :lang pseudo class when filtering locale-specific elements.</p>
+<p>So if you find yourself using attribute selector to style locale-specific
+content, I'd suggest to consider using <code>:lang</code> pseudo class selector instead.</p>
+<p>Hopefully this post shows the difference between two approaches clearly
+and demonstrates proper problem solving.</p>
+]]></description><link>https://sergeylukin.com/2013/styling-html-elements-based-on-locale/</link><guid isPermaLink="true">https://sergeylukin.com/2013/styling-html-elements-based-on-locale/</guid><pubDate>Thu, 26 Dec 2013 00:00:00 GMT</pubDate></item><item><title><![CDATA[Compiling VIM with Python support]]></title><description><![CDATA[<p>When compiling <a href="http://www.vim.org">VIM</a> with specific version of Python
+support while there is different default version of Python on your system it's
+important to note following caveats:</p>
+<ul>
+<li>Pass <code>--with-python-config-dir</code> flag with the path to Python's <code>config</code>
+directory</li>
+<li>Remove <code>src/auto/config.cache</code> file if you've executed <code>./configure</code> before
+without passing the <code>--with-python-config-dir</code> flag. This was the tip I
+missed and spent an hour or two on failing to compile properly</li>
+<li>Run <code>make clean</code> if you compiled VIM before and it didn't work out</li>
+</ul>
+<p>Anyways if in doubt here is the list of commands I had to execute in order to
+successfully compile VIM with Python 2.7 support from scratch (make sure to
+check your Python's config directory path and adjust accordingly):</p>
+<pre><code class="hljs language-bash"><span class="hljs-built_in">cd</span> /usr/<span class="hljs-built_in">local</span>/src
+wget ftp://ftp.vim.org/pub/vim/unix/vim-7.4.tar.bz2
+tar -xjf vim-7.4.tar.bz2
+<span class="hljs-built_in">cd</span> vim74
+./configure --prefix=/usr \
+--<span class="hljs-built_in">enable</span>-pythoninterp \
+--with-python-config-dir=/usr/<span class="hljs-built_in">local</span>/lib/python2.7/config
+make &#x26;&#x26; make install</code></pre>
+<div class="warning-box">
+<p>Update on 19/11/2013</p>
+<p>If all above fails, I'd consider opening <code>./src/auto/config.log</code>
+file and verifying that configuration script fetches correct
+version of Python by searching for <code>python</code> string. If it fetches wrong
+version of Python then I'd replace the file it tries to fetch (for
+example <code>/usr/bin/python2</code>) with my specific
+version of Python binary just before running configuration script
+(don't forget to remove <code>./src/auto/config.cache</code>) and rolling it back
+after it finishes. A bit dumb method but it should work, please let
+me know if you can think of any better approach.</p>
+</div>
+]]></description><link>https://sergeylukin.com/2013/compiling-vim-with-python-support/</link><guid isPermaLink="true">https://sergeylukin.com/2013/compiling-vim-with-python-support/</guid><pubDate>Mon, 18 Nov 2013 00:00:00 GMT</pubDate></item><item><title><![CDATA[Meet the new Design Patterns resource]]></title><description><![CDATA[<h2 id="preface"><a href="#preface" class="phenomic-HeadingAnchor">#</a>Preface</h2>
+<p>Let's admit it, there were released many resources on Software Architectural
+Patterns since
+<a href="http://en.wikipedia.org/wiki/Design_Patterns_%28book%29">Design Patterns</a> book was
+published back in 1994 and still it requires a lot of effort to learn the
+real nuts and bolts of all the patterns and even more effort is required to
+understand the real difference between them and to realize how easy it is to
+use wrong pattern.</p>
+<h2 id="in-the-beginning"><a href="#in-the-beginning" class="phenomic-HeadingAnchor">#</a>In the beginning..</h2>
+<p>Lately, I am much after learning Design Patterns and applying them in my daily
+work. Since I was not alone in my team who desired to really understand all the
+Design Patterns, at some point we started an internal newsletter. We intended
+to discuss all the known patterns with practical examples together via daily
+newsletter. At some point we realized that all the research we're doing should
+be centralized somewhere in public domain and that we should really continue
+this research publicly as it felt like the way to become good at desired
+subject and collect a good documentation that could be useful for others to
+learn from.</p>
+<h2 id="launched"><a href="#launched" class="phenomic-HeadingAnchor">#</a>Launched</h2>
+<p>On 21st of February, 2013 we registered an
+<a href="https://github.com/designpatterns">Github Organization</a> called
+<strong>designpatterns</strong> with one single repository where we've put our writings and
+examples we've done till then. We feel like this was a beginning of a
+potentially great resource which will hopefully fill the gap between most
+developers and Design Patterns. It will become better and better with time
+as we continously update it with new patterns and polish existing documentation
+and code examples. We realize how much work we have left to do before we can
+call it a good resource but we're very excited about our journey to it and
+we believe in what we do.</p>
+<p>Our repository is completely open for suggestions and pull requests. We invite
+you to participate in it's development. We believe in open source and in
+community-driven projects and our project is in the list.</p>
+<p>So, here is the link: <a href="https://github.com/designpatterns">https://github.com/designpatterns</a></p>
+<h2 id="what-do-you-think"><a href="#what-do-you-think" class="phenomic-HeadingAnchor">#</a>What do you think?</h2>
+<p>I would be glad to know what you think about it. Is it something you were
+missing as well as us? Is there anything like that already you know about?
+Leave your comments below.</p>
+]]></description><link>https://sergeylukin.com/2013/meet-the-new-design-patterns-resource/</link><guid isPermaLink="true">https://sergeylukin.com/2013/meet-the-new-design-patterns-resource/</guid><pubDate>Wed, 27 Feb 2013 00:00:00 GMT</pubDate></item><item><title><![CDATA[Ruby on Rails magic: models relation]]></title><description><![CDATA[<p>5 months ago I <a href="/2012/ruby-on-rails-magic-first-impression/">demonstrated</a> a
+convention of RoR that makes it possible to render Model objects in their
+corresponding partials in just one line with expressive syntax:</p>
+<pre><code class="hljs language-rhtml">&#x3C;%= <span class="hljs-keyword">render</span> @users %></code></pre>
+<p>Today I want to show another tip I learned about
+<a href="http://guides.rubyonrails.org/association_basics.html">ActiveRecord</a> from this
+<a href="https://tutsplus.com/course/riding-ruby-on-rails/">tutsplus course</a> recorded
+by José Mota.</p>
+<h2 id="accessing-a-model-via-its-parent"><a href="#accessing-a-model-via-its-parent" class="phenomic-HeadingAnchor">#</a>Accessing a model via it's parent</h2>
+<p>Assuming we have 2 models with <code>has_many</code> and <code>belongs_to</code> relations
+respectively:</p>
+<pre><code class="hljs language-ruby"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span> &#x3C; ActiveRecord::Base</span>
+  has_many <span class="hljs-symbol">:posts</span>
+<span class="hljs-keyword">end</span></code></pre>
+<pre><code class="hljs language-ruby"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Post</span> &#x3C; ActiveRecord::Base</span>
+  belongs_to <span class="hljs-symbol">:user</span>
+<span class="hljs-keyword">end</span></code></pre>
+<p>Now we want to list all posts written by User in a View. Here is what I did at
+first myself.</p>
+<p>Controller:</p>
+<pre><code class="hljs language-ruby">@user   = User.find(params[<span class="hljs-symbol">:id</span>])
+<span class="hljs-comment"># Find all posts by <span class="hljs-doctag">@user</span></span>
+@posts  = Post.where(<span class="hljs-string">"user_id = ?"</span>, @user.id)</code></pre>
+<p>View:</p>
+<pre><code class="hljs language-rhtml"><span class="xml"></span>&#x3C;%<span class="ruby"> @posts.each <span class="hljs-keyword">do</span> <span class="hljs-params">|post|</span> </span>%><span class="xml">
+  <span class="hljs-tag">&#x3C;<span class="hljs-name">p</span>></span></span>&#x3C;%=<span class="ruby"> post.title </span>%><span class="xml"><span class="hljs-tag">&#x3C;/<span class="hljs-name">p</span>></span>
+</span>&#x3C;%<span class="ruby"> <span class="hljs-keyword">end</span> </span>%><span class="xml"></span></code></pre>
+<p>Did you already notice where I wrote too much? Well, of course in Controller.
+Assigning User to <code>@user</code> was more than enough as our User model has <code>has_many</code>
+relation with Post model and so posts can be accessed via <code>@user.posts</code> due to
+magic provided by ActiveRecord.</p>
+<p>Let's take a look at a more expressive code that accomplishes exactly the same
+result.</p>
+<p>Controller:</p>
+<pre><code class="hljs language-ruby">@user = User.find(params[<span class="hljs-symbol">:id</span>])</code></pre>
+<p>View:</p>
+<pre><code class="hljs language-rhtml"><span class="xml"></span>&#x3C;%<span class="ruby"> @user.posts.each <span class="hljs-keyword">do</span> <span class="hljs-params">|post|</span> </span>%><span class="xml">
+  <span class="hljs-tag">&#x3C;<span class="hljs-name">p</span>></span></span>&#x3C;%=<span class="ruby"> post.title </span>%><span class="xml"><span class="hljs-tag">&#x3C;/<span class="hljs-name">p</span>></span>
+</span>&#x3C;%<span class="ruby"> <span class="hljs-keyword">end</span> </span>%><span class="xml"></span></code></pre>
+<h2 id="conclusion"><a href="#conclusion" class="phenomic-HeadingAnchor">#</a>Conclusion</h2>
+<p>This is a clear example where most generic complexity can be be hidden
+behind the scenes and only self-explanatory command executions operate the main
+program logic. The importance of this aspect increases with codebase growth.</p>
+<p>The more self-explanatory code we write, the less human-readable comments we
+have to add.</p>
+]]></description><link>https://sergeylukin.com/2013/ruby-on-rails-magic-models-relation/</link><guid isPermaLink="true">https://sergeylukin.com/2013/ruby-on-rails-magic-models-relation/</guid><pubDate>Mon, 18 Feb 2013 00:00:00 GMT</pubDate></item><item><title><![CDATA[Yeoman on FreeBSD 9]]></title><description><![CDATA[<h2 id="preface"><a href="#preface" class="phenomic-HeadingAnchor">#</a>Preface</h2>
+<p>In this post I will go through the steps I had to perform in order to get
+<a href="http://yeoman.io">Yeoman</a> up and running on relatively fresh installation of
+FreeBSD 9 with Xorg and Desktop Environment.</p>
+<h2 id="check-your-system"><a href="#check-your-system" class="phenomic-HeadingAnchor">#</a>Check your system</h2>
+<p>Run <code>curl -L get.yeoman.io | bash</code> in order to see what dependencies you need
+to install. Since my commit
+<a href="https://github.com/yeoman/yeoman/commit/8630c44fc9cd46155f9a620c9b2a2ec5c9ca81bd">8630c44</a>
+was kindly merged into Yeoman's master branch this step is possible on
+FreeBSD.</p>
+<h2 id="install-dependencies"><a href="#install-dependencies" class="phenomic-HeadingAnchor">#</a>Install Dependencies</h2>
+<div class="warning-box">
+<p>The list of dependencies may vary with time. Refer to
+<a href="https://github.com/yeoman/yeoman/wiki/Manual-Install">Yeoman's wiki</a> for more
+up-to-date list.</p>
+</div>
+<p>Please note that there are alternative methods for installing software in
+FreeBSD so you decide what method to use when installing those dependencies,
+however following worked for me.</p>
+<p>Install as <em>root</em> user:</p>
+<p><strong>Git</strong>
+<code>cd /usr/ports/devel/git &#x26;&#x26; make install clean</code></p>
+<p><strong>PhantomJS</strong> (this may take a while)
+<code>cd /usr/ports/lang/phantomjs &#x26;&#x26; make install clean</code></p>
+<p><strong>NodeJS</strong>
+<code>cd /usr/ports/www/node &#x26;&#x26; make install clean</code></p>
+<p><strong>Npm</strong>
+<code>cd /usr/ports/www/npm &#x26;&#x26; make install clean</code></p>
+<p><strong>Google Chrome</strong> (this may take a while)
+<code>cd /usr/ports/www/chromium &#x26;&#x26; make install clean</code></p>
+<p><strong>libyaml</strong>
+<code>cd /usr/ports/textproc/libyaml &#x26;&#x26; make install clean</code></p>
+<p><strong>optipng</strong>
+<code>cd /usr/ports/graphics/optipng &#x26;&#x26; make install clean</code></p>
+<p>Install following as normal user:</p>
+<p><strong>Rvm</strong> + <strong>Ruby</strong>
+Refer to <a href="https://rvm.io/rvm/install/">https://rvm.io/rvm/install/</a> for
+installation instructions</p>
+<p><strong>Compass</strong>
+<code>gem install compass</code></p>
+<h2 id="verify-dependencies"><a href="#verify-dependencies" class="phenomic-HeadingAnchor">#</a>Verify Dependencies</h2>
+<p>Run <code>curl -L get.yeoman.io | bash</code> again to verify that you have completed
+the list of required dependencies.</p>
+<h2 id="say-hello-to-yeoman"><a href="#say-hello-to-yeoman" class="phenomic-HeadingAnchor">#</a>Say hello to Yeoman</h2>
+<p>Finally, when all required dependencies are installed we're ready
+(hopefully) to say hello to Yeoman:<br>
+<code>npm install -g yeoman</code></p>
+<h2 id="known-issues"><a href="#known-issues" class="phenomic-HeadingAnchor">#</a>Known issues</h2>
+<ul>
+<li>When I first initialized a yeoman project and executed <code>yeoman server</code> I
+got this scary error: <strong>v8::Context::New() V8 is no longer usable</strong>
+The solution was to execute <code>yeoman build</code> at least once, since then I
+didn't see this error</li>
+<li>After a few files modifications yeoman couldn't reload the page (opened in
+Opera) any more as there was this error: <strong>TypeError: Cannot call method 'send'
+of null</strong> The solution was to use Chromium instead of Opera (didn't test
+with Firefox however)</li>
+</ul>
+<h2 id="conclusion"><a href="#conclusion" class="phenomic-HeadingAnchor">#</a>Conclusion</h2>
+<p>Hope this post will be helpful to anyone besides myself.</p>
+<p>If you followed this post and found any required steps that are
+not covered, please leave a comment below.</p>
+]]></description><link>https://sergeylukin.com/2012/yeoman-on-freebsd-9/</link><guid isPermaLink="true">https://sergeylukin.com/2012/yeoman-on-freebsd-9/</guid><pubDate>Mon, 19 Nov 2012 00:00:00 GMT</pubDate></item><item><title><![CDATA[Ruby on Rails magic: first impression]]></title><description><![CDATA[<h2 id="preface"><a href="#preface" class="phenomic-HeadingAnchor">#</a>Preface</h2>
+<p>Being a PHP developer for more than 5 years I recently started learning
+Ruby on Rails. While I'm used to <em>"Convention over Configuration"</em>
+principles in PHP frameworks I found not a few conventions in Ruby on Rails
+that amazed me in some way.</p>
+<p>There is something that amazed me more than anything else and I couldn't
+help myself from writing about it when I discovered it in
+<a href="http://ruby.railstutorial.org/ruby-on-rails-tutorial-book">this book</a>
+written by Michael Hartl.</p>
+<h2 id="render-a-partial-for-model-objects"><a href="#render-a-partial-for-model-objects" class="phenomic-HeadingAnchor">#</a>Render a partial for model objects</h2>
+<p>Assuming we have a simple Controller action:</p>
+<pre><code class="hljs language-ruby"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">index</span></span>
+  @users = User.all
+<span class="hljs-keyword">end</span></code></pre>
+<p>..and a simple partial template called <code>_user.html.erb</code>:</p>
+<pre><code class="hljs language-html"><span class="hljs-tag">&#x3C;<span class="hljs-name">p</span>></span><span class="hljs-tag">&#x3C;<span class="hljs-name">%=</span> <span class="hljs-attr">user.name</span> %></span><span class="hljs-tag">&#x3C;/<span class="hljs-name">p</span>></span></code></pre>
+<p>..let's take a look at it's View (<code>index.html.erb</code>):</p>
+<pre><code class="hljs language-rhtml"><span class="xml"></span>&#x3C;%<span class="ruby"> @users.each <span class="hljs-keyword">do</span> <span class="hljs-params">|u|</span> </span>%><span class="xml">
+  </span>&#x3C;%=<span class="ruby"> render <span class="hljs-string">'user'</span>, <span class="hljs-symbol">user:</span> u </span>%><span class="xml">
+</span>&#x3C;%<span class="ruby"> <span class="hljs-keyword">end</span> </span>%><span class="xml"></span></code></pre>
+<p>Here, a partial <code>_user.html.erb</code> that resides in the same directory as
+current template file is being rendered for every <code>@users</code> element.
+Pretty straight-forward. Similarly I would do it in any PHP framework.</p>
+<p>However as it turns out View's code can be replaced with just one line:</p>
+<pre><code class="hljs language-rhtml">&#x3C;%= <span class="hljs-keyword">render</span> @users %></code></pre>
+<p>It looks simple and logical at first sight, however, if you think about it,
+there are so many things happening in this line.</p>
+<p>Let's break it into pieces:</p>
+<ul>
+<li>Rails infers that <code>@users</code> is a list of <code>User</code> objects.</li>
+<li>Because <code>@users</code> is a list Rails iterates through every element.</li>
+<li>Because <code>@users</code> consists of User objects it assigns every object
+to partial's variable <code>user</code> and renders a partial called <code>_user.html.erb</code></li>
+</ul>
+<p>If <code>@users</code> would be a list of <code>Post</code> objects, Rails would
+set partial's variable called <code>post</code> and render
+a partial called <code>_post.html.erb</code> for every list element.</p>
+<h2 id="conclusion"><a href="#conclusion" class="phenomic-HeadingAnchor">#</a>Conclusion</h2>
+<p>I'm a big fan of convention over configuration paradigm and such examples
+excite me every time I discover them. I know it slows down the learning
+progress in the beginning but it saves time in the long run.</p>
+]]></description><link>https://sergeylukin.com/2012/ruby-on-rails-magic-first-impression/</link><guid isPermaLink="true">https://sergeylukin.com/2012/ruby-on-rails-magic-first-impression/</guid><pubDate>Tue, 18 Sep 2012 00:00:00 GMT</pubDate></item><item><title><![CDATA[Things I learned from personal website: setup]]></title><description><![CDATA[<div class="session-post">
+<p>This entry is part 1 of 3 in the <strong>Things I learned from personal website</strong> series:</p>
+<ul>
+<li>Part I, setup</li>
+<li>Part II, seo (coming soon)</li>
+<li>Part III, speed (coming soon)</li>
+</ul>
+</div>
+<h2 id="preface"><a href="#preface" class="phenomic-HeadingAnchor">#</a>Preface</h2>
+<p>What can be better than creating a small personal website after years of
+working with complex server-side driven systems. What I mean is that
+when setting up a simple static website from scratch I had more chances to get
+known with all the aspects of a well baked website without being diverted by
+server-side issues.</p>
+<p>In this entry I will share my experience with some nice tools and services I used
+while setting up my personal website:</p>
+<ul>
+<li><a href="http://jekyllrb.com/">Jekyll</a> to handle website generation</li>
+<li><a href="http://daringfireball.net/projects/markdown/">Markdown</a> format to write blog
+posts</li>
+<li><a href="http://disqus.com">Disqus</a> for commenting</li>
+<li><a href="http://git-scm.com">Git</a> to keep track of changes and to deploy</li>
+<li><a href="https://github.com">Github</a> to host the website</li>
+</ul>
+<p>If you're unfamiliar with one of those tools, I highly recommend you checking them
+out and in this entry I expect that you have done that alrady. After you completed
+your basic setup use this article as a helper guide for more advanced customization.</p>
+<h2 id="configuration"><a href="#configuration" class="phenomic-HeadingAnchor">#</a>Configuration</h2>
+<p>Jekyll reads configuration data from <code>_config.yml</code> file in site's root
+directory.</p>
+<p>You are not limited to options recognized by Jekyll. You can store any data
+and retrieve it in any page/layout that contains
+<a href="http://jekyllrb.com/docs/frontmatter/">YAML</a> form matter block.
+For example, I can store my personal info:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">author:</span>
+<span class="hljs-attr">  name:</span> <span class="hljs-string">Sergey</span> <span class="hljs-string">Lukin</span>
+<span class="hljs-attr">  email:</span> <span class="hljs-string">contact@sergeylukin.com</span>
+<span class="hljs-attr">  about:</span> <span class="hljs-string">About</span> <span class="hljs-string">me</span> <span class="hljs-string">text</span> <span class="hljs-string">goes</span> <span class="hljs-string">here</span>
+<span class="hljs-attr">  profiles:</span>
+<span class="hljs-attr">    - name:</span> <span class="hljs-string">Github</span>
+<span class="hljs-attr">      url:</span> <span class="hljs-attr">https://github.com/sergeylukin</span>
+<span class="hljs-attr">    - name:</span> <span class="hljs-string">Twitter</span>
+<span class="hljs-attr">      url:</span> <span class="hljs-attr">https://twitter.com/sergey_lukin</span></code></pre>
+<p>and retrieve it in a page using <a href="https://github.com/shopify/liquid/wiki">Liquid</a> syntax:</p>
+<pre><code class="hljs language-html"><span class="hljs-tag">&#x3C;<span class="hljs-name">p</span>></span>My name is {{ site.author.name }}<span class="hljs-tag">&#x3C;/<span class="hljs-name">p</span>></span>
+
+<span class="hljs-tag">&#x3C;<span class="hljs-name">p</span>></span>Social links:<span class="hljs-tag">&#x3C;/<span class="hljs-name">p</span>></span>
+{% for profile in site.author.profiles %}
+    <span class="hljs-tag">&#x3C;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"{{ profile.url }}"</span>></span>{{ profile.name }}<span class="hljs-tag">&#x3C;/<span class="hljs-name">a</span>></span>
+{% endfor %}</code></pre>
+<p>The key here is <strong>site</strong> object - in this case we use it to access variables
+set in <code>_config.yml</code></p>
+<h2 id="navigation"><a href="#navigation" class="phenomic-HeadingAnchor">#</a>Navigation</h2>
+<p>Navigation can be rendered by looping through <strong>site.pages</strong>.
+Additionally, you can also set a variable, let's say, <strong>navigation</strong> in
+every page you want to be in navigation menu and filter it in the loop. So,
+here is the YAML front matter for a page that should show up in navigation:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-meta">---</span>
+<span class="hljs-attr">title:</span> <span class="hljs-string">Page</span> <span class="hljs-string">title</span>
+<span class="hljs-attr">navigation:</span> <span class="hljs-literal">true</span>
+<span class="hljs-meta">---</span></code></pre>
+<p>..then in navigation template loop over all pages and only print ones that have
+<strong>navigation</strong> variable set to <strong>true</strong> (also we can check the URLs and add additional
+markup if necessary):</p>
+<pre><code class="hljs language-html"><span class="hljs-tag">&#x3C;<span class="hljs-name">ul</span>></span>
+  {% for node in site.pages %}
+    {% if node.navigation == true %}
+      {% assign attr = nil %}
+      {% if page.url == node.url %}
+        {% capture attr %}class="active"{% endcapture %}
+      {% endif %}
+      <span class="hljs-tag">&#x3C;<span class="hljs-name">li</span>></span>
+        <span class="hljs-tag">&#x3C;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"{{ node.url }}"</span>{{ <span class="hljs-attr">attr</span> }}></span>{{ node.title }}<span class="hljs-tag">&#x3C;/<span class="hljs-name">a</span>></span>
+      <span class="hljs-tag">&#x3C;/<span class="hljs-name">li</span>></span>
+    {% endif %}
+  {% endfor %}
+<span class="hljs-tag">&#x3C;/<span class="hljs-name">ul</span>></span></code></pre>
+<p>In this example a comparison is done beween <strong>page.url</strong> and <strong>node.url</strong> and
+if no difference found, then variable <strong>attr</strong> gets a value of <code>class="active"</code>
+which allows us to apply special styles to menu item.</p>
+<h2 id="list-posts"><a href="#list-posts" class="phenomic-HeadingAnchor">#</a>List posts</h2>
+<p>Printing a list of items inside <code>_posts</code> directory is as easy as:</p>
+<pre><code class="hljs language-html"><span class="hljs-tag">&#x3C;<span class="hljs-name">ul</span>></span>
+  {% for item in site.posts limit:5 %}
+    <span class="hljs-tag">&#x3C;<span class="hljs-name">li</span>></span>
+      <span class="hljs-tag">&#x3C;<span class="hljs-name">time</span> <span class="hljs-attr">datetime</span>=<span class="hljs-string">"{{ item.date | date: "</span>%<span class="hljs-attr">Y-</span>%<span class="hljs-attr">m-</span>%<span class="hljs-attr">d</span>" }}" <span class="hljs-attr">pubdate</span>></span>{{ item.date | date: "%B %d, %Y" }}<span class="hljs-tag">&#x3C;/<span class="hljs-name">time</span>></span>
+      <span class="hljs-tag">&#x3C;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"{{ item.url }}"</span>></span>{{ item.title }}<span class="hljs-tag">&#x3C;/<span class="hljs-name">a</span>></span>
+    <span class="hljs-tag">&#x3C;/<span class="hljs-name">li</span>></span>
+  {% endfor %}
+<span class="hljs-tag">&#x3C;/<span class="hljs-name">ul</span>></span></code></pre>
+<h2 id="creating-a-new-post"><a href="#creating-a-new-post" class="phenomic-HeadingAnchor">#</a>Creating a New Post</h2>
+<p>To create a New Post I run
+<a href="https://github.com/sergeylukin/sergeylukin.github.com/blob/master/_bin/newdraft">newdraft</a>
+script:</p>
+<pre><code class="hljs language-bash">./_bin/newdraft HERE GOES POST TITLE</code></pre>
+<h2 id="git-and-draft-posts"><a href="#git-and-draft-posts" class="phenomic-HeadingAnchor">#</a>GIT and Draft posts</h2>
+<p>Usually it takes a while untill I finish writing a blog post. In the meanwhile I can
+do changes to other parts of the website and I don't want GIT to recognize a
+draft post as a new object. To avoid this I added following line in <code>.gitignore</code> file:</p>
+<pre><code class="hljs language-bash">_posts/*.draft.*</code></pre>
+<p>So that any file in <code>_posts</code> directory that ends with <strong>draft.md</strong> or
+<strong>draft.markdown</strong> is ignored and only when I finish writing the post I remove
+the <strong>draft</strong> from the filename.</p>
+<h2 id="syntax-highlighting"><a href="#syntax-highlighting" class="phenomic-HeadingAnchor">#</a>Syntax highlighting</h2>
+<p>In almost every blog post of mine I insert code snippets so it's extremely
+important to have syntax highlighting feature included. Jekyll uses Pygments
+to handle this. Here is how I use it:</p>
+<pre><code class="hljs language-html">{% highlight html %}
+..some code here..
+{% endhighlight %}</code></pre>
+<p>Wonder how I succeeded to print Liquid syntax without it being parsed?
+I placed it between <strong>{% raw %}</strong> and <strong>{% endraw %}</strong>
+tags. For more Liquid stuff consider reading
+<a href="https://github.com/shopify/liquid/wiki/liquid-for-designers">Liquid for Designers</a>.</p>
+<p>Please note that Liquid v2.3.0 and higher supports tag <strong>{% raw %}</strong>
+instead of <strong>{% literal %}</strong> as it was in v2.2.2.
+Besides that, I would highly recommend installing locally Jekyll and Liquid of
+exactly same versions as Github pages server is running (you can always check
+what software they are running
+<a href="https://help.github.com/articles/using-jekyll-with-pages">here</a>)
+and generating a website locally before deploying. That way you will definitely
+identify any potential problem as early as possible and it will save your time.</p>
+<h2 id="commenting"><a href="#commenting" class="phenomic-HeadingAnchor">#</a>Commenting</h2>
+<p>My commenting platform of choice is <a href="http://disqus.com">Disqus</a>. After signing up
+add a little bit of configuration to <code>_config.yml</code>:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">disqus:</span>
+<span class="hljs-attr">  enabled:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">  shortname:</span> <span class="hljs-string">YOUR_DISQUS_SHORTNAME</span></code></pre>
+<p>and insert this piece of HTML/JavaScript wherever you want to enable comments:</p>
+<pre><code class="hljs language-javascript">{% <span class="hljs-keyword">if</span> site.disqus.enabled %}
+&#x3C;!-- Disqus -->
+<span class="xml"><span class="hljs-tag">&#x3C;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"disqus_thread"</span>></span><span class="hljs-tag">&#x3C;/<span class="hljs-name">div</span>></span></span>
+&#x3C;noscript>Please enable JavaScript to view the &#x3C;<span class="hljs-regexp">/noscript>
+&#x3C;a href="http:/</span><span class="hljs-regexp">/disqus.com" class="dsq-brlink">comments powered by &#x3C;span class="logo-disqus">Disqus&#x3C;/</span>span><span class="xml"><span class="hljs-tag">&#x3C;/<span class="hljs-name">a</span>></span></span>
+&#x3C;script type=<span class="hljs-string">"text/javascript"</span>>
+  <span class="hljs-keyword">var</span> disqus_shortname = <span class="hljs-string">'{{ site.disqus.shortname }}'</span>,
+      disqus_identifier = <span class="hljs-string">'{{ page.id }}'</span>;
+  (<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">var</span> dsq = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'script'</span>);
+    dsq.type = <span class="hljs-string">'text/javascript'</span>;
+    dsq.async = <span class="hljs-literal">true</span>;
+    dsq.src = <span class="hljs-string">'http://'</span> + disqus_shortname + <span class="hljs-string">'.disqus.com/embed.js'</span>;
+    (<span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">'head'</span>)[<span class="hljs-number">0</span>] ||
+     <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">'body'</span>)[<span class="hljs-number">0</span>]).appendChild(dsq);
+  })();
+<span class="xml"><span class="hljs-tag">&#x3C;/<span class="hljs-name">script</span>></span></span>
+{% endif %}</code></pre>
+<p>Please note that you can place this code in a separate file, let's say <code>disqus.html</code>
+inside <code>_includes</code> directory and only add one line wherever you want to include it:</p>
+<pre><code class="hljs language-html">{% include disqus.html %}</code></pre>
+<h2 id="twitter-button"><a href="#twitter-button" class="phenomic-HeadingAnchor">#</a>Twitter button</h2>
+<p>For official integration instructions refer to
+<a href="https://dev.twitter.com/docs/tweet-button">their documentation</a>.
+As an option you can add following to <code>_config.yml</code>:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">like_button_twitter:</span> <span class="hljs-literal">true</span></code></pre>
+<p>create <code>_includes/like_button_twitter.html</code> with following contents:</p>
+<pre><code class="hljs language-javascript">{% <span class="hljs-keyword">if</span> site.like_button_twitter %}
+&#x3C;!-- Tweet btn -->
+<span class="xml"><span class="hljs-tag">&#x3C;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://twitter.com/share"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"twitter-share-button"</span>></span>Tweet<span class="hljs-tag">&#x3C;/<span class="hljs-name">a</span>></span></span>
+&#x3C;script>
+!<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">d,s,id</span>)</span>{
+  <span class="hljs-keyword">var</span> js,fjs=d.getElementsByTagName(s)[<span class="hljs-number">0</span>];
+  <span class="hljs-keyword">if</span>(!d.getElementById(id)) {
+    js=d.createElement(s);
+    js.id=id;js.src=<span class="hljs-string">"//platform.twitter.com/widgets.js"</span>;
+    fjs.parentNode.insertBefore(js,fjs);
+  }
+}(<span class="hljs-built_in">document</span>,<span class="hljs-string">"script"</span>,<span class="hljs-string">"twitter-wjs"</span>);
+<span class="xml"><span class="hljs-tag">&#x3C;/<span class="hljs-name">script</span>></span></span>
+{% endif %}</code></pre>
+<p>and finally include it in template, like so:</p>
+<pre><code class="hljs language-html">{% include like_button_twitter.html %}</code></pre>
+<h2 id="404-page"><a href="#404-page" class="phenomic-HeadingAnchor">#</a>404 Page</h2>
+<p><a href="http://pages.github.com/">GitHub pages</a> service makes it extremely easy to set custom
+404 page - just place, let's say, 404.md file in the root directory.
+Also, I'm not huge fan of that, but I add index.md file to directories that
+don't have index page (like /js/, /css/ etc.) and include content's of 404 page.
+As long as I have those directories in the list of directories to ignore in robots.txt
+file, it's not a big deal.</p>
+<h2 id="faviconico"><a href="#faviconico" class="phenomic-HeadingAnchor">#</a>favicon.ico</h2>
+<p>Don't forget to place <strong>favicon.ico</strong> file in the root directory. Don't have one?
+Check out <a href="http://www.favicon.cc/">favicon.cc</a></p>
+<p>Add meta tag in page's head:</p>
+<pre><code class="hljs language-html"><span class="hljs-tag">&#x3C;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"shortcut icon"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/favicon.ico"</span> /></span></code></pre>
+<h2 id="humanstxt"><a href="#humanstxt" class="phenomic-HeadingAnchor">#</a>humans.txt</h2>
+<p>What is humans.txt?</p>
+<blockquote>
+<p>It's an initiative for knowing the people behind a website.
+It's a TXT file that contains information about the different
+people who have contributed to building the website.</p>
+</blockquote>
+<p>Why humans.txt?</p>
+<blockquote>
+<p>Because it's something simple and fast to create</p>
+</blockquote>
+<p>So why not:) Place it in the root directory of your website
+with some message to humans and optionally add author tag
+to the <code>&#x3C;head></code> tag:</p>
+<pre><code class="hljs language-html"><span class="hljs-tag">&#x3C;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"author"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/humans.txt"</span> /></span></code></pre>
+<p>Read more on <a href="http://humanstxt.org">humanstxt.org</a></p>
+<h2 id="conclusion"><a href="#conclusion" class="phenomic-HeadingAnchor">#</a>Conclusion</h2>
+<p>And what tools/services are you using for your static websites?</p>
+<div class="warning-box">
+<p>Update on 30/01/2013</p>
+<p>Replace <strong>{% literal %}</strong> with <strong>{% raw %}</strong> tags as Github
+upgraded running version of Liquid.</p>
+</div>
+]]></description><link>https://sergeylukin.com/2012/things-i-learned-from-personal-website-setup/</link><guid isPermaLink="true">https://sergeylukin.com/2012/things-i-learned-from-personal-website-setup/</guid><pubDate>Wed, 29 Aug 2012 00:00:00 GMT</pubDate></item><item><title><![CDATA[Lazy GIT integration]]></title><description><![CDATA[<div class="warning-box">
+<p>Update on 20/06/2013</p>
+<p>Add <a href="#deploy-tip">custom deployment strategy tip</a></p>
+</div>
+<h2 id="preface"><a href="#preface" class="phenomic-HeadingAnchor">#</a>Preface</h2>
+<p>Recently I was challenged to integrate source code versioning and efficient
+website deployment in a team that was not ready to switch from old-school FTP deployment.
+I call it "lazy integration" because it is indeed full featured integration
+while it doesn't force anyone in the team using GIT at all.</p>
+<p>This post contains information on how I did it and aims to be a how-to reminder
+for myself in case I will ever do this again. It works for me just fine but
+I can't guarantee that by following this tutorial you won't harm your software
+so use this tutorial on your own risk.</p>
+<h2 id="overview"><a href="#overview" class="phenomic-HeadingAnchor">#</a>Overview</h2>
+<p>Let's take a brief look at what we're going to do and how things are going to work after
+we finish.</p>
+<p>First, a bare repository is initialized out of production source code directory, some hooks
+are being installed and repo can now be cloned to dev stations.</p>
+<p>Pushing modifications to bare repository activates a hook
+(<a href="https://gist.github.com/3175467">pre-receive</a>) that checks for any
+local working directory (production source code) changes against HEAD (latest commit).
+If no changes were found it just quits with no error and another hook
+(<a href="https://gist.github.com/3175502">post-receive</a>)
+applies pushed commits to the working directory (production source code).
+However, if any changes were detected they are submitted to a newly created commit and
+hook quits with an error. At this point developer should bring that commit to
+his cloned repo (by executing, let's say, PULL command) and PUSH once again.</p>
+<p>What is so special in this flow? Well, it allows you to make changes directly on
+PRODUCTION source code while still being able using GIT to track and deploy your
+modifications. Some teams need just that but please make sure to read some of my thoughts
+on that in the end of this post.</p>
+<h2 id="get-started"><a href="#get-started" class="phenomic-HeadingAnchor">#</a>Get started</h2>
+<p>Let's get our hands dirty and try a real example.</p>
+<p>Although I couldn't think of any software project that wouldn't fit this integration, I
+expect you to make required adjustments for your specific scenario if you decided to apply this
+integration to your project.</p>
+<p>In our example we assume that we have a simple static website, it's
+webroot path is <code>/var/htdocs/myproject</code> on PRODUCTION server (also we assume that
+you have SSH access to this server).</p>
+<p>Initialize a GIT repository out of source code we have in <code>myproject</code> directory:</p>
+<pre><code class="hljs language-bash"><span class="hljs-built_in">cd</span> /var/htdocs
+mkdir myproject.git &#x26;&#x26; <span class="hljs-built_in">cd</span> myproject.git
+git init --bare
+git --work-tree=../myproject add .
+git --work-tree=../myproject commit -m<span class="hljs-string">'Initial commit'</span></code></pre>
+<p>Setup hooks. First, download
+<a href="https://gist.github.com/3175467">pre-receive</a> hook as
+<code>/var/htdocs/myproject.git/hooks/pre-receive</code> and
+make it executable:</p>
+<pre><code class="hljs language-bash"><span class="hljs-built_in">cd</span> /var/htdocs/myproject.git/hooks
+wget http://bit.ly/19l9tpg -O pre-receive --no-check-certificate
+chmod +x pre-receive</code></pre>
+<p>Next, download
+<a href="https://gist.github.com/3175502">post-receive</a> hook
+as <code>/var/htdocs/myproject.git/hooks/post-receive</code> and
+make it executable:</p>
+<pre><code class="hljs language-bash"><span class="hljs-built_in">cd</span> /var/htdocs/myproject.git/hooks
+wget http://bit.ly/12XVJ57 -O post-receive --no-check-certificate
+chmod +x post-receive</code></pre>
+<p>Now open both of the hooks in your editor of choice and make sure that the value of <code>WORKTREE</code> variable
+represents the absolute or relative path (relatively to <code>/var/htdocs/myproject.git/</code>)
+of your source code directory.</p>
+<p>You're ready to clone bare repository to your local dev station and PUSH from
+it.</p>
+<p>Additionally, you could set some restrictions on your bare repository (I find
+them reasonable on PRODUCTION bare repository):</p>
+<pre><code class="hljs language-bash"><span class="hljs-built_in">cd</span> /var/htdocs/myproject.git
+git config receive.denyDeletes <span class="hljs-literal">true</span>
+git config receive.denyNonFastForwards <span class="hljs-literal">true</span></code></pre>
+<p><code>denyDeletes</code> set to <code>true</code> denies any attempts to delete a branch remotely.</p>
+<p><code>denyNonFastForwards</code> set to <code>true</code> denies any attempts to delete/replace
+existing commits remotely.</p>
+<p><a name="deploy-tip"></a></p>
+<h2 id="custom-deployment"><a href="#custom-deployment" class="phenomic-HeadingAnchor">#</a>Custom deployment</h2>
+<p>If updating working directory is not enough for your deployment needs I
+suggest commiting a script which will do all is required and executing it
+in <code>post-receive</code> hook right after working tree update, like so:</p>
+<pre><code class="hljs language-bash"><span class="hljs-comment"># update the working tree</span>
+GIT_WORK_TREE=<span class="hljs-variable">$WORKTREE</span> git checkout -f
+
+<span class="hljs-comment"># run custom deploy script</span>
+deploy_script=<span class="hljs-string">"<span class="hljs-variable">$WORKTREE</span>/deploy.sh"</span>
+<span class="hljs-keyword">if</span> [ -e <span class="hljs-string">"<span class="hljs-variable">$deploy_script</span>"</span> ]
+<span class="hljs-keyword">then</span>
+  . <span class="hljs-variable">$deploy_script</span>
+<span class="hljs-keyword">fi</span></code></pre>
+<p>In this example I'm executing <code>deploy.sh</code> script which resides in the root of
+my repository. Which means I can control my deployment right from my
+local repo and any changes to script take place immediately. It's very
+powerful.</p>
+<h2 id="conclusion"><a href="#conclusion" class="phenomic-HeadingAnchor">#</a>Conclusion</h2>
+<p>Although I believe that any source code deployment should be done via VCS like
+GIT I know that there are not few programmers out there who're not ready to
+waste their time learning VCS and they feel themselves uncomfortable with the
+fact that any PRODUCTION update should go through a "long" deployment process.</p>
+<p>So, even though I'm glad I could find a solution for teams with weak workflow,
+I highly recommend changing the workflow rather than using this kind of solution.</p>
+<p>And what kind of deployment strategy are you using in your projects?</p>
+]]></description><link>https://sergeylukin.com/2012/lazy-git-integration/</link><guid isPermaLink="true">https://sergeylukin.com/2012/lazy-git-integration/</guid><pubDate>Fri, 03 Aug 2012 00:00:00 GMT</pubDate></item></channel></rss>
