@@ -1,3 +1,5 @@
+# Personal website
+
 ## Install dependencies
 
 ```sh
